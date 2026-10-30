@@ -1,0 +1,1447 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>The Cinéaste Gazette // Scene Intent &amp; Analysis Studio</title>
+    <!-- Typography & Icons -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&amp;family=Work+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "newsprint": "#F7F3EB",
+                        "newsprint-card": "#FFFFFF",
+                        "ink": "#181816",
+                        "ink-light": "#54524B",
+                        "ink-faded": "#8C887E",
+                        "vermilion": "#D83A20",
+                        "vermilion-soft": "#FDEEEB",
+                        "gazette-amber": "#EAB308",
+                        "border-ink": "#181816",
+                        "border-hairline": "#DCD6C8"
+                    },
+                    fontFamily: {
+                        "display": ["Bricolage Grotesque", "sans-serif"],
+                        "serif": ["Newsreader", "serif"],
+                        "sans": ["Work Sans", "sans-serif"],
+                        "mono": ["Space Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-family: 'Material Symbols Outlined';
+            font-weight: normal;
+            font-style: normal;
+            font-size: 20px;
+            line-height: 1;
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        .border-double-gazette {
+            border-bottom: 3px double #181816;
+        }
+
+        .border-double-top {
+            border-top: 3px double #181816;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#FAF7F2] text-ink min-h-screen flex flex-col antialiased selection:bg-vermilion selection:text-white font-serif">
+    <!-- TOP BROADSHEET MASTHEAD -->
+    <header class="w-full bg-[#FAF7F2] border-b-2 border-border-ink">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 py-2 border-b border-border-hairline flex flex-wrap items-center justify-between font-sans text-xs uppercase tracking-widest text-ink-light">
+            <div class="flex items-center space-x-4">
+                <span class="font-bold text-vermilion">NO. 142 // AUTUMN EDITION</span>
+                <span class="hidden sm:inline text-ink-faded">|</span>
+                <span class="hidden sm:inline">PARIS • BERLIN • NEW YORK</span>
+            </div>
+            <div class="flex items-center space-x-6 text-[11px] font-semibold">
+                <span>CINETECHBENCH ENGINE ACTIVE</span>
+                <span class="w-1.5 h-1.5 rounded-full bg-vermilion inline-block animate-ping"></span>
+                <span class="text-ink font-bold">STUDIO WORKBENCH</span>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 py-5 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex flex-col text-center md:text-left">
+                <h1
+                    class="font-display font-black text-4xl sm:text-5xl md:text-6xl tracking-tight text-ink uppercase flex items-center gap-2">
+                    <span>The Ciné</span>
+                    <span
+                        class="text-vermilion italic font-serif font-normal lowercase tracking-normal text-4xl sm:text-5xl md:text-6xl -mt-1">Vision</span>
+                </h1>
+                <p class="font-sans text-xs sm:text-sm tracking-widest uppercase font-semibold text-ink-light mt-1">
+                    A Periodic Journal of Video Intent, Dramaturgy &amp; Film Craft
+                </p>
+            </div>
+            <div class="flex items-center space-x-3">
+                <a href="profile.html" id="nav-profile-link" title="Filmmaker Dossier"
+                    class="flex items-center space-x-2.5 bg-white hover:bg-vermilion-soft border-2 border-ink px-3.5 py-1.5 shadow-[2px_2px_0px_#181816] transition-all group cursor-pointer">
+                    <div id="nav-avatar-box"
+                        class="w-7 h-7 rounded-full border border-ink overflow-hidden bg-vermilion text-white flex items-center justify-center font-display font-bold text-xs shrink-0 relative">
+                        <span id="nav-avatar-icon" class="material-symbols-outlined text-base">person</span>
+                        <img id="nav-avatar-img" class="absolute inset-0 w-full h-full object-cover hidden"
+                            alt="Avatar" />
+                    </div>
+                    <span id="nav-user-name"
+                        class="font-sans font-bold text-xs uppercase text-ink group-hover:text-vermilion">Profile</span>
+                </a>
+            </div>
+        </div>
+        <div class="border-double-gazette"></div>
+    </header>
+
+    <!-- MAIN EDITORIAL CONTENT -->
+    <main class="flex-1 w-full max-w-7xl mx-auto px-4 sm:px-6 py-8 lg:py-10">
+        <div class="flex flex-wrap items-baseline justify-between border-b border-border-hairline pb-4 mb-8 gap-4">
+            <div class="flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-4">
+                <span
+                    class="font-display font-extrabold text-sm uppercase px-2.5 py-0.5 bg-vermilion text-white tracking-wider">
+                    ANALYSIS WORKBENCH
+                </span>
+                <h2 id="scene-title-header"
+                    class="font-display font-bold text-xl sm:text-2xl tracking-tight text-ink uppercase">
+                    Reel 04: The Nocturnal Encounter
+                </h2>
+            </div>
+            <div class="flex items-center space-x-4 font-mono text-xs text-ink-light tracking-tight">
+                <span id="video-slate-tc">TC 00:14:28:19</span>
+                <span>•</span>
+                <span>CINETECHBENCH ML</span>
+                <span>•</span>
+                <span class="text-ink font-semibold">CLIP ViT-B/32</span>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+            <!-- LEFT COLUMN: Scene Intent & Video Upload (7 Cols) -->
+            <div class="lg:col-span-7 flex flex-col space-y-8">
+                <!-- File Uploader Dropzone -->
+                <div onclick="document.getElementById('shot-file-input').click();"
+                    class="border-2 border-dashed border-border-ink hover:border-vermilion p-5 text-center bg-white hover:bg-vermilion-soft/30 transition-colors cursor-pointer group shadow-[3px_3px_0px_#181816]">
+                    <input type="file" id="shot-file-input" accept="video/*,image/*" class="hidden"
+                        onchange="handleFileUpload(event)">
+                    <div class="flex items-center justify-center space-x-3">
+                        <span
+                            class="material-symbols-outlined text-vermilion group-hover:scale-110 transition-transform text-2xl">file_upload</span>
+                        <div class="text-left">
+                            <p class="font-sans font-bold text-xs uppercase tracking-wider text-ink">
+                                Upload 5–10 Second Video or Image for CineTechBench Analysis
+                            </p>
+                            <p class="font-mono text-[11px] text-ink-faded">
+                                Select MP4, MOV, ProRes, PNG, JPG (Auto midpoint frame extraction &amp; visual classification)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Narrative Intent & Genre/Emotion Selection -->
+                <div class="bg-white border-2 border-border-ink p-6 sm:p-8 shadow-[4px_4px_0px_#181816] relative">
+                    <div
+                        class="absolute -top-3.5 right-6 px-3 py-0.5 bg-vermilion text-white font-sans text-[11px] font-bold tracking-widest uppercase border border-ink">
+                        SCENE PREMISE &amp; INTENT
+                    </div>
+
+                    <h3 class="font-display font-bold text-2xl sm:text-3xl text-ink leading-tight mb-4">
+                        Select Scene Genre &amp; Intended Emotion
+                    </h3>
+
+                    <!-- Genre Dropdown -->
+                    <div class="mb-5 space-y-1">
+                        <label
+                            class="block font-sans text-xs uppercase tracking-wider font-bold text-ink-light flex justify-between">
+                            <span>1. Select Genre:</span>
+                            <span class="text-vermilion font-mono text-[10px] uppercase font-bold">Step 1</span>
+                        </label>
+                        <!-- Hidden native select for form compatibility -->
+                        <select id="genre-input" class="hidden" onchange="handleGenreChange();">
+                            <option value="" disabled selected>-- Choose Genre --</option>
+                        </select>
+                        <!-- Wrapper for Trigger and Options Panel -->
+                        <div class="relative">
+                            <!-- Custom Styled Broadsheet Trigger Button -->
+                            <button type="button" id="genre-custom-trigger" onclick="toggleCustomDropdown('genre')"
+                                class="w-full bg-[#FAF7F2] hover:bg-white border-2 border-border-ink font-sans text-sm px-3.5 py-2.5 text-ink font-bold flex items-center justify-between shadow-[2px_2px_0px_#181816] transition-all cursor-pointer">
+                                <span id="genre-trigger-label" class="uppercase">-- Choose Genre --</span>
+                                <span class="material-symbols-outlined text-vermilion transition-transform"
+                                    id="genre-trigger-arrow">keyboard_arrow_down</span>
+                            </button>
+                            <!-- Custom Broadsheet Options Panel -->
+                            <div id="genre-custom-panel"
+                                class="hidden absolute top-full left-0 right-0 mt-1 z-30 bg-[#FAF7F2] border-2 border-ink shadow-[5px_5px_0px_#181816] max-h-60 overflow-y-auto">
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Emotion Dropdown (Disabled until genre chosen) -->
+                    <div class="space-y-1 border-t border-dashed border-border-hairline pt-4">
+                        <label
+                            class="block font-sans text-xs uppercase tracking-wider font-bold text-ink-light flex justify-between mb-1">
+                            <span>2. Select Intended Emotion:</span>
+                            <span class="text-vermilion font-mono text-[10px] uppercase font-bold">Step 2</span>
+                        </label>
+                        <!-- Hidden native select for form compatibility -->
+                        <select id="intent-textarea" class="hidden" disabled onchange="handleEmotionChange();">
+                            <option value="" disabled selected>-- Choose Genre First --</option>
+                        </select>
+                        <!-- Wrapper for Trigger and Options Panel -->
+                        <div class="relative">
+                            <!-- Custom Styled Broadsheet Trigger Button -->
+                            <button type="button" id="emotion-custom-trigger" disabled
+                                onclick="toggleCustomDropdown('emotion')"
+                                class="w-full bg-[#FAF7F2] hover:bg-white border-2 border-border-ink font-sans text-sm px-3.5 py-2.5 text-ink font-bold flex items-center justify-between shadow-[2px_2px_0px_#181816] transition-all disabled:opacity-50 disabled:cursor-not-allowed cursor-pointer">
+                                <span id="emotion-trigger-label" class="uppercase">-- Choose Genre First --</span>
+                                <span class="material-symbols-outlined text-vermilion transition-transform"
+                                    id="emotion-trigger-arrow">keyboard_arrow_down</span>
+                            </button>
+                            <!-- Custom Broadsheet Options Panel -->
+                            <div id="emotion-custom-panel"
+                                class="hidden absolute top-full left-0 right-0 mt-1 z-30 bg-[#FAF7F2] border-2 border-ink shadow-[5px_5px_0px_#181816] max-h-60 overflow-y-auto">
+                            </div>
+                        </div>
+
+                        <div class="mt-4 flex flex-wrap items-center justify-between gap-2">
+                            <span id="word-count"
+                                class="font-mono text-[10px] text-ink-faded uppercase tracking-widest font-bold">
+                                STRICT RULEBOOK VALIDATION ENABLED
+                            </span>
+                            <button type="button" id="analyze-btn" disabled onclick="runModelAnalysis()"
+                                class="px-5 py-2.5 bg-vermilion hover:bg-ink text-white font-sans font-extrabold text-xs uppercase tracking-widest border-2 border-ink transition-all flex items-center gap-1.5 shadow-[2px_2px_0px_#181816] disabled:opacity-50 disabled:cursor-not-allowed disabled:shadow-none cursor-pointer">
+                                <span class="material-symbols-outlined text-base">auto_fix_high</span>
+                                <span>Analyze Cinematography</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 16:9 Cinema Monitor -->
+                <div class="bg-white border-2 border-border-ink p-3 sm:p-4 shadow-[4px_4px_0px_#181816] relative">
+                    <div
+                        class="relative aspect-video w-full bg-black overflow-hidden group border border-border-ink flex items-center justify-center">
+
+                        <!-- Idle Empty State Overlay (Shown before video upload) -->
+                        <div id="empty-monitor-state"
+                            class="absolute inset-0 bg-[#121210] flex flex-col items-center justify-center p-6 text-center z-10">
+                            <div
+                                class="w-12 h-12 rounded-full bg-vermilion/20 border-2 border-vermilion flex items-center justify-center mb-3">
+                                <span class="material-symbols-outlined text-vermilion text-2xl">videocam</span>
+                            </div>
+                            <h4 class="font-headline font-extrabold text-sm uppercase text-white tracking-wider mb-1">
+                                NO REEL LOADED
+                            </h4>
+                            <p class="font-mono text-[11px] text-zinc-400 max-w-xs mb-3 leading-relaxed">
+                                Upload a 5–10 second video clip to preview frame &amp; run CineTechBench evaluation.
+                            </p>
+                            <label for="shot-file-input"
+                                class="inline-flex items-center gap-1.5 font-mono text-[10px] font-bold uppercase tracking-wider px-3.5 py-1.5 bg-vermilion text-white border border-ink hover:bg-white hover:text-ink cursor-pointer transition-colors shadow-[2px_2px_0px_#181816]">
+                                <span class="material-symbols-outlined text-sm">upload</span>
+                                <span>Choose Video Reel</span>
+                            </label>
+                        </div>
+
+                        <img id="shot-media-img" alt="Cinematic film shot preview"
+                            class="w-full h-full object-cover hidden" src="" />
+
+                        <video id="shot-media-video" class="w-full h-full object-cover hidden" loop playsinline
+                            controls></video>
+
+                        <!-- Telemetry Progress Bar Overlay -->
+                        <div id="scan-overlay"
+                            class="absolute inset-0 bg-ink/90 backdrop-blur-xs hidden z-30 flex flex-col justify-center items-center p-6 border-4 border-vermilion transition-all">
+
+                            <div class="flex items-center gap-2 mb-3">
+                                <span class="w-3 h-3 rounded-full bg-vermilion animate-ping"></span>
+                                <span class="font-mono text-xs text-white uppercase tracking-widest font-bold">
+                                    CINETECHBENCH ML ENGINE EXECUTING
+                                </span>
+                            </div>
+
+                            <!-- Live Telemetry Status Step Box -->
+                            <div id="progress-step-text"
+                                class="bg-[#FAF7F2] text-ink font-mono text-xs px-4 py-2 border-2 border-ink uppercase tracking-widest font-extrabold shadow-[3px_3px_0px_#D83A20] mb-4 text-center max-w-md w-full">
+                                ⚡ [1/4] EXTRACTING REPRESENTATIVE MIDPOINT FRAME...
+                            </div>
+
+                            <!-- Broadsheet Animated Progress Bar Track -->
+                            <div
+                                class="w-full max-w-md bg-[#FAF7F2] border-2 border-ink p-1 shadow-[4px_4px_0px_#181816]">
+                                <div id="progress-bar-fill"
+                                    class="h-3.5 bg-vermilion transition-all duration-300 shadow-[0_0_12px_#D83A20]"
+                                    style="width: 10%;">
+                                </div>
+                            </div>
+
+                            <!-- Percentage Badge -->
+                            <div
+                                class="w-full max-w-md flex justify-between items-center mt-2 font-mono text-[11px] text-zinc-300 font-bold uppercase tracking-wider">
+                                <span id="progress-status-badge">PROCESSING CLIP...</span>
+                                <span id="progress-percent-text"
+                                    class="text-vermilion font-extrabold text-sm">10%</span>
+                            </div>
+                        </div>
+
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20 pointer-events-none">
+                        </div>
+
+                        <div
+                            class="absolute top-3 left-3 bg-ink/90 text-white px-2.5 py-1 font-mono text-[11px] tracking-wider border border-white/20 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-vermilion animate-pulse"></span>
+                            <span>CINETECHBENCH EVALUATION ACTIVE</span>
+                        </div>
+
+                        <div
+                            class="absolute bottom-0 inset-x-0 p-3 sm:p-4 flex items-center justify-between text-white bg-gradient-to-t from-black via-black/80 to-transparent">
+                            <div class="flex items-center space-x-3">
+                                <button type="button" onclick="togglePlayPause()"
+                                    class="hover:text-vermilion transition-colors">
+                                    <span id="play-icon" class="material-symbols-outlined">play_arrow</span>
+                                </button>
+                                <span id="timecode-display" class="font-mono text-xs text-zinc-300">00:04 / 00:08</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT COLUMN: Evaluation & Telemetry Matrix (5 Cols) -->
+            <div class="lg:col-span-5 flex flex-col space-y-6">
+                <!-- 1. INTENT ALIGNMENT SCORE CARD -->
+                <div class="bg-white border-2 border-border-ink p-6 sm:p-7 shadow-[5px_5px_0px_#181816] relative">
+                    <div class="flex items-center justify-between border-b-2 border-border-ink pb-3 mb-6">
+                        <div>
+                            <span
+                                class="font-display font-black text-xs tracking-widest text-vermilion uppercase block">
+                                CINETECHBENCH EVALUATION
+                            </span>
+                            <h3 class="font-display font-extrabold text-2xl text-ink uppercase tracking-tight">
+                                Intent Alignment
+                            </h3>
+                        </div>
+                        <div id="badge-score"
+                            class="w-12 h-12 rounded-full bg-vermilion text-white font-display font-black text-lg flex items-center justify-center border-2 border-ink shadow-xs">
+                            78
+                        </div>
+                    </div>
+
+                    <!-- Score Callout -->
+                    <div class="p-5 bg-vermilion-soft border-2 border-vermilion mb-6 relative overflow-hidden">
+                        <span
+                            class="font-sans text-[11px] font-black uppercase tracking-widest text-vermilion block mb-1">
+                            INTENT ALIGNMENT SCORE
+                        </span>
+                        <div class="flex items-baseline space-x-3">
+                            <span id="resonance-score"
+                                class="font-display font-black text-6xl sm:text-7xl text-ink tracking-tighter leading-none">
+                                78<span class="text-vermilion text-3xl sm:text-4xl font-bold">/100</span>
+                            </span>
+                            <div class="flex flex-col">
+                                <span id="alignment-status"
+                                    class="font-display font-extrabold text-sm uppercase text-vermilion">HIGH ALIGNMENT</span>
+                                <span id="alignment-desc" class="font-serif italic text-xs text-ink-light">
+                                    Visual attributes effectively support the intended genre &amp; emotion profile.
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 2. DETECTED CINEMATOGRAPHY PROFILE -->
+                    <div class="space-y-3">
+                        <div
+                            class="font-sans text-xs uppercase font-bold text-ink-faded tracking-widest border-b border-border-hairline pb-1 flex justify-between items-baseline">
+                            <span>Detected Cinematography</span>
+                            <span class="text-vermilion font-mono text-[10px] uppercase font-bold">TRAINED
+                                CLASSIFIERS</span>
+                        </div>
+
+                        <!-- 1. Shot Scale -->
+                        <div class="p-2.5 bg-[#FAF7F2] border-2 border-border-ink">
+                            <div class="flex justify-between items-center">
+                                <span class="font-sans text-xs font-bold uppercase text-ink">Shot Scale</span>
+                                <span id="detected-shot-size"
+                                    class="font-mono font-extrabold text-xs uppercase text-white bg-ink px-2.5 py-1 border border-border-ink">
+                                    --
+                                </span>
+                            </div>
+                            <div class="mt-2 pt-1 border-t border-dashed border-border-hairline">
+                                <button type="button" onclick="toggleAlternativePredictions('scale')"
+                                    class="text-[10px] font-sans font-bold uppercase tracking-wider text-ink-light hover:text-vermilion flex items-center justify-between w-full cursor-pointer py-0.5">
+                                    <span class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">tune</span>
+                                        <span>View alternative predictions</span>
+                                    </span>
+                                    <span class="material-symbols-outlined text-sm transition-transform duration-150"
+                                        id="alt-arrow-scale">expand_more</span>
+                                </button>
+                                <div id="alt-panel-scale" class="hidden mt-2 pt-2 border-t border-zinc-200 space-y-1.5">
+                                    <div
+                                        class="text-[9px] font-mono text-ink-faded uppercase tracking-widest flex justify-between">
+                                        <span>Ranked Predictions</span>
+                                        <span class="text-amber-800">Est. Model Confidence Score (Uncalibrated)</span>
+                                    </div>
+                                    <div id="alt-list-scale" class="space-y-1.5 pt-1">
+                                        <span class="text-[11px] font-serif italic text-ink-faded">Run analysis to view
+                                            probability rankings.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 2. Vertical Camera Angle -->
+                        <div class="p-2.5 bg-[#FAF7F2] border-2 border-border-ink">
+                            <div class="flex justify-between items-center">
+                                <span class="font-sans text-xs font-bold uppercase text-ink">Vertical Camera
+                                    Angle</span>
+                                <span id="detected-camera-angle"
+                                    class="font-mono font-extrabold text-xs uppercase text-white bg-ink px-2.5 py-1 border border-border-ink">
+                                    --
+                                </span>
+                            </div>
+                            <div class="mt-2 pt-1 border-t border-dashed border-border-hairline">
+                                <button type="button" onclick="toggleAlternativePredictions('angle')"
+                                    class="text-[10px] font-sans font-bold uppercase tracking-wider text-ink-light hover:text-vermilion flex items-center justify-between w-full cursor-pointer py-0.5">
+                                    <span class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">tune</span>
+                                        <span>View alternative predictions</span>
+                                    </span>
+                                    <span class="material-symbols-outlined text-sm transition-transform duration-150"
+                                        id="alt-arrow-angle">expand_more</span>
+                                </button>
+                                <div id="alt-panel-angle" class="hidden mt-2 pt-2 border-t border-zinc-200 space-y-1.5">
+                                    <div
+                                        class="text-[9px] font-mono text-ink-faded uppercase tracking-widest flex justify-between">
+                                        <span>Ranked Predictions</span>
+                                        <span class="text-amber-800">Est. Model Confidence Score (Uncalibrated)</span>
+                                    </div>
+                                    <div id="alt-list-angle" class="space-y-1.5 pt-1">
+                                        <span class="text-[11px] font-serif italic text-ink-faded">Run analysis to view
+                                            probability rankings.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 3. Composition -->
+                        <div class="p-2.5 bg-[#FAF7F2] border-2 border-border-ink">
+                            <div class="flex justify-between items-center">
+                                <span class="font-sans text-xs font-bold uppercase text-ink">Composition</span>
+                                <span id="detected-composition"
+                                    class="font-mono font-extrabold text-xs uppercase text-white bg-ink px-2.5 py-1 border border-border-ink">
+                                    --
+                                </span>
+                            </div>
+                            <div class="mt-2 pt-1 border-t border-dashed border-border-hairline">
+                                <button type="button" onclick="toggleAlternativePredictions('composition')"
+                                    class="text-[10px] font-sans font-bold uppercase tracking-wider text-ink-light hover:text-vermilion flex items-center justify-between w-full cursor-pointer py-0.5">
+                                    <span class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">tune</span>
+                                        <span>View alternative predictions</span>
+                                    </span>
+                                    <span class="material-symbols-outlined text-sm transition-transform duration-150"
+                                        id="alt-arrow-composition">expand_more</span>
+                                </button>
+                                <div id="alt-panel-composition"
+                                    class="hidden mt-2 pt-2 border-t border-zinc-200 space-y-1.5">
+                                    <div
+                                        class="text-[9px] font-mono text-ink-faded uppercase tracking-widest flex justify-between">
+                                        <span>Ranked Predictions</span>
+                                        <span class="text-amber-800">Est. Model Confidence Score (Uncalibrated)</span>
+                                    </div>
+                                    <div id="alt-list-composition" class="space-y-1.5 pt-1">
+                                        <span class="text-[11px] font-serif italic text-ink-faded">Run analysis to view
+                                            probability rankings.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 4. Lighting Quality -->
+                        <div class="p-2.5 bg-[#FAF7F2] border-2 border-border-ink">
+                            <div class="flex justify-between items-center">
+                                <span class="font-sans text-xs font-bold uppercase text-ink">Lighting Quality</span>
+                                <span id="detected-lighting-quality"
+                                    class="font-mono font-extrabold text-xs uppercase text-white bg-ink px-2.5 py-1 border border-border-ink">
+                                    --
+                                </span>
+                            </div>
+                            <div class="mt-2 pt-1 border-t border-dashed border-border-hairline">
+                                <button type="button" onclick="toggleAlternativePredictions('lighting_quality')"
+                                    class="text-[10px] font-sans font-bold uppercase tracking-wider text-ink-light hover:text-vermilion flex items-center justify-between w-full cursor-pointer py-0.5">
+                                    <span class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">tune</span>
+                                        <span>View alternative predictions</span>
+                                    </span>
+                                    <span class="material-symbols-outlined text-sm transition-transform duration-150"
+                                        id="alt-arrow-lighting_quality">expand_more</span>
+                                </button>
+                                <div id="alt-panel-lighting_quality"
+                                    class="hidden mt-2 pt-2 border-t border-zinc-200 space-y-1.5">
+                                    <div
+                                        class="text-[9px] font-mono text-ink-faded uppercase tracking-widest flex justify-between">
+                                        <span>Ranked Predictions (2 Classes)</span>
+                                        <span class="text-amber-800">Est. Model Confidence Score (Uncalibrated)</span>
+                                    </div>
+                                    <div id="alt-list-lighting_quality" class="space-y-1.5 pt-1">
+                                        <span class="text-[11px] font-serif italic text-ink-faded">Run analysis to view
+                                            probability rankings.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 5. Lighting Intensity -->
+                        <div class="p-2.5 bg-[#FAF7F2] border-2 border-border-ink">
+                            <div class="flex justify-between items-center">
+                                <span class="font-sans text-xs font-bold uppercase text-ink">Lighting Intensity</span>
+                                <span id="detected-lighting-intensity"
+                                    class="font-mono font-extrabold text-xs uppercase text-white bg-ink px-2.5 py-1 border border-border-ink">
+                                    --
+                                </span>
+                            </div>
+                            <div class="mt-2 pt-1 border-t border-dashed border-border-hairline">
+                                <button type="button" onclick="toggleAlternativePredictions('lighting_intensity')"
+                                    class="text-[10px] font-sans font-bold uppercase tracking-wider text-ink-light hover:text-vermilion flex items-center justify-between w-full cursor-pointer py-0.5">
+                                    <span class="flex items-center gap-1">
+                                        <span class="material-symbols-outlined text-xs">tune</span>
+                                        <span>View alternative predictions</span>
+                                    </span>
+                                    <span class="material-symbols-outlined text-sm transition-transform duration-150"
+                                        id="alt-arrow-lighting_intensity">expand_more</span>
+                                </button>
+                                <div id="alt-panel-lighting_intensity"
+                                    class="hidden mt-2 pt-2 border-t border-zinc-200 space-y-1.5">
+                                    <div
+                                        class="text-[9px] font-mono text-ink-faded uppercase tracking-widest flex justify-between">
+                                        <span>Ranked Predictions (2 Classes)</span>
+                                        <span class="text-amber-800">Est. Model Confidence Score (Uncalibrated)</span>
+                                    </div>
+                                    <div id="alt-list-lighting_intensity" class="space-y-1.5 pt-1">
+                                        <span class="text-[11px] font-serif italic text-ink-faded">Run analysis to view
+                                            probability rankings.</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 3. WHAT WORKS (MATCHES) -->
+                    <div class="mt-6 pt-4 border-t-2 border-border-ink">
+                        <h4
+                            class="font-display font-extrabold text-sm uppercase text-ink mb-3 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-green-700 text-lg">check_circle</span>
+                            <span>What Works (Matches)</span>
+                        </h4>
+                        <div id="matches-container" class="space-y-2 text-xs font-sans text-ink">
+                            <div class="p-2.5 bg-green-50 border border-green-300 text-green-900 font-medium">
+                                Select a genre &amp; emotion to evaluate matches.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 4. WHAT COULD BE IMPROVED (MISMATCHES) -->
+                    <div class="mt-5 pt-4 border-t border-dashed border-border-hairline">
+                        <h4
+                            class="font-display font-extrabold text-sm uppercase text-vermilion mb-3 flex items-center gap-1.5">
+                            <span class="material-symbols-outlined text-vermilion text-lg">warning</span>
+                            <span>What Could Be Improved (Mismatches)</span>
+                        </h4>
+                        <div id="mismatches-container" class="space-y-2 text-xs font-sans text-ink">
+                            <div class="p-2.5 bg-vermilion-soft border border-vermilion/40 text-vermilion font-medium">
+                                Select a genre &amp; emotion to evaluate mismatches.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 5. RECOMMENDATIONS (LLM EDITORIAL CONSULTANT) -->
+                    <div class="mt-5 pt-4 border-t-2 border-border-ink">
+                        <div class="flex items-center justify-between mb-3">
+                            <h4
+                                class="font-display font-extrabold text-sm uppercase text-ink flex items-center gap-1.5">
+                                <span class="material-symbols-outlined text-vermilion text-lg">psychology</span>
+                                <span>Cinematography Recommendations</span>
+                            </h4>
+                            <span id="llm-provider-badge"
+                                class="font-mono text-[9px] uppercase font-bold text-white bg-ink px-2 py-0.5 border border-ink">
+                                LLM CONSULTANT
+                            </span>
+                        </div>
+
+                        <!-- Overall assessment / explanation -->
+                        <div id="llm-explanation-box"
+                            class="p-3 bg-[#FAF7F2] border-2 border-border-ink text-xs font-sans text-ink mb-3 leading-relaxed shadow-[2px_2px_0px_#181816]">
+                            <div class="font-mono text-[9px] uppercase text-ink-faded font-bold mb-1 tracking-wider">
+                                Scene Aesthetic Assessment</div>
+                            <p id="llm-explanation-text" class="font-serif italic text-ink-light">
+                                Recommendations will be generated automatically based on classifier predictions.
+                            </p>
+                        </div>
+
+                        <!-- Existing strengths worth preserving -->
+                        <div id="llm-strengths-wrapper" class="hidden mb-3">
+                            <div
+                                class="font-sans text-[11px] font-bold uppercase text-green-900 mb-1.5 flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm text-green-700">verified</span>
+                                <span>Strengths Worth Preserving</span>
+                            </div>
+                            <ul id="llm-strengths-list"
+                                class="space-y-1.5 font-serif text-xs italic text-ink-light pl-4 list-disc"></ul>
+                        </div>
+
+                        <!-- Practical changes to consider -->
+                        <div id="llm-suggestions-wrapper" class="mb-3 space-y-2">
+                            <div
+                                class="font-sans text-[11px] font-bold uppercase text-ink mb-1.5 flex items-center gap-1">
+                                <span class="material-symbols-outlined text-sm text-vermilion">edit_note</span>
+                                <span>Specific Cinematography Changes</span>
+                            </div>
+                            <div id="llm-suggestions-list" class="space-y-2">
+                                <div
+                                    class="p-2.5 bg-zinc-50 border border-zinc-200 text-xs font-serif italic text-zinc-600">
+                                    Awaiting analysis output...
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Uncertainty / Contested feature notes -->
+                        <div id="llm-uncertainty-wrapper"
+                            class="hidden mb-3 p-2.5 bg-amber-50 border border-amber-300 text-xs text-amber-950 font-sans">
+                            <div
+                                class="font-bold text-[10px] uppercase font-mono tracking-wider flex items-center gap-1 text-amber-900 mb-1">
+                                <span class="material-symbols-outlined text-sm">help_outline</span>
+                                <span>Model Confidence &amp; Ambiguity Notice</span>
+                            </div>
+                            <ul id="llm-uncertainty-list" class="list-disc pl-4 space-y-0.5 text-[11px]"></ul>
+                        </div>
+
+                        <!-- Disclaimer notice -->
+                        <div
+                            class="text-[9px] font-mono text-ink-faded italic pt-1 border-t border-dashed border-border-hairline">
+                            * Creative options designed to support intended genre &amp; emotion. Subject to directorial
+                            vision.
+                        </div>
+
+                        <!-- Hidden list for legacy fallback / saveTake reading -->
+                        <ul id="recommendations-container" class="hidden">
+                            <li>Recommendations will be generated automatically based on classifier predictions.</li>
+                        </ul>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="mt-6 pt-4 border-t-2 border-border-ink space-y-2.5">
+                        <button type="button" id="save-take-btn" onclick="saveCurrentTake()"
+                            class="w-full bg-ink hover:bg-vermilion text-white transition-colors duration-150 font-sans font-extrabold text-xs uppercase tracking-widest py-3 px-6 flex items-center justify-center space-x-2 border-2 border-ink shadow-[3px_3px_0px_#181816] cursor-pointer">
+                            <span class="material-symbols-outlined text-lg">bookmark_add</span>
+                            <span id="save-btn-text">Save Take to Profile Dossier</span>
+                        </button>
+                        <button type="button" onclick="exportEditorialLogSheet()"
+                            class="w-full bg-vermilion hover:bg-ink text-white transition-colors duration-150 font-sans font-bold text-xs uppercase tracking-widest py-3 px-6 flex items-center justify-center space-x-2 border-2 border-ink shadow-[3px_3px_0px_#181816] cursor-pointer">
+                            <span class="material-symbols-outlined text-lg">download</span>
+                            <span>Export Editorial Log Sheet</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- BROADSHEET FOOTER -->
+    <footer class="w-full bg-[#FAF7F2] border-double-top mt-16 py-8">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-4 font-sans text-xs uppercase tracking-widest text-ink-light">
+            <div class="text-center md:text-left">
+                <span class="font-display font-extrabold text-ink mr-2">THE CINÉASTE GAZETTE</span>
+                <span>• CINEMATOGRAPHY EVALUATION STUDIO • ALL RIGHTS RESERVED</span>
+            </div>
+            <div class="flex space-x-6 text-[11px] font-semibold">
+                <a class="hover:text-vermilion transition-colors" href="main.html">Studio Workbench</a>
+                <a class="hover:text-vermilion transition-colors" href="profile.html">Profile Dossier</a>
+                <a class="hover:text-vermilion transition-colors" href="login.html">Cinema Pass / Sign In</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive AI Model Engine Script -->
+    <script>
+        let isPlaying = false;
+        let selectedVideoFile = null;
+        let genreOptions = {};
+
+        function getApiEndpoint(path) {
+            if (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '8000')) {
+                return 'http://localhost:8000' + path;
+            }
+            return path;
+        }
+
+        // Custom Broadsheet Dropdown Manager
+        function toggleCustomDropdown(type) {
+            const trigger = document.getElementById(`${type}-custom-trigger`);
+            if (trigger && trigger.disabled) return;
+            const panel = document.getElementById(`${type}-custom-panel`);
+            const arrow = document.getElementById(`${type}-trigger-arrow`);
+            if (!panel) return;
+            const isOpening = panel.classList.contains('hidden');
+
+            document.querySelectorAll('[id$="-custom-panel"]').forEach(p => p.classList.add('hidden'));
+            document.querySelectorAll('[id$="-trigger-arrow"]').forEach(a => a.classList.remove('rotate-180'));
+
+            if (isOpening) {
+                panel.classList.remove('hidden');
+                if (arrow) arrow.classList.add('rotate-180');
+            }
+        }
+
+        function renderCustomGenreDropdown() {
+            const panel = document.getElementById('genre-custom-panel');
+            const nativeSelect = document.getElementById('genre-input');
+            const triggerLabel = document.getElementById('genre-trigger-label');
+            if (!panel) return;
+
+            panel.innerHTML = '';
+            const genres = Object.keys(genreOptions);
+
+            if (genres.length === 0) {
+                panel.innerHTML = `<div class="p-3 text-xs font-mono text-ink-faded">No genres available</div>`;
+                return;
+            }
+
+            genres.forEach(g => {
+                const item = document.createElement('div');
+                const isSelected = nativeSelect.value === g;
+                item.className = `p-3 font-sans font-bold text-xs uppercase flex items-center justify-between transition-colors border-b border-border-hairline cursor-pointer ${isSelected ? 'bg-vermilion text-white font-extrabold' : 'hover:bg-vermilion/10 text-ink'}`;
+                item.innerHTML = `
+                    <span>${g}</span>
+                    ${isSelected ? '<span class="material-symbols-outlined text-sm">check</span>' : ''}
+                `;
+                item.onclick = (e) => {
+                    e.stopPropagation();
+                    nativeSelect.value = g;
+                    triggerLabel.textContent = g;
+                    toggleCustomDropdown('genre');
+                    handleGenreChange();
+                };
+                panel.appendChild(item);
+            });
+
+            if (nativeSelect.value) {
+                triggerLabel.textContent = nativeSelect.value;
+            } else {
+                triggerLabel.textContent = '-- Choose Genre --';
+            }
+        }
+
+        function renderCustomEmotionDropdown() {
+            const panel = document.getElementById('emotion-custom-panel');
+            const nativeSelect = document.getElementById('intent-textarea');
+            const triggerBtn = document.getElementById('emotion-custom-trigger');
+            const triggerLabel = document.getElementById('emotion-trigger-label');
+            if (!panel) return;
+
+            panel.innerHTML = '';
+            const selectedGenre = document.getElementById('genre-input').value;
+
+            if (!selectedGenre || !genreOptions[selectedGenre]) {
+                if (triggerBtn) triggerBtn.disabled = true;
+                if (triggerLabel) triggerLabel.textContent = '-- Choose Genre First --';
+                return;
+            }
+
+            if (triggerBtn) triggerBtn.disabled = false;
+            const availableEmotions = genreOptions[selectedGenre] || [];
+
+            availableEmotions.forEach(eVal => {
+                const item = document.createElement('div');
+                const isSelected = nativeSelect.value === eVal;
+                item.className = `p-3 font-sans font-bold text-xs uppercase flex items-center justify-between transition-colors border-b border-border-hairline cursor-pointer ${isSelected ? 'bg-vermilion text-white font-extrabold' : 'hover:bg-vermilion/10 text-ink'}`;
+                item.innerHTML = `
+                    <span>${eVal}</span>
+                    ${isSelected ? '<span class="material-symbols-outlined text-sm">check</span>' : ''}
+                `;
+                item.onclick = (e) => {
+                    e.stopPropagation();
+                    nativeSelect.value = eVal;
+                    triggerLabel.textContent = eVal;
+                    toggleCustomDropdown('emotion');
+                    handleEmotionChange();
+                };
+                panel.appendChild(item);
+            });
+
+            if (nativeSelect.value) {
+                triggerLabel.textContent = nativeSelect.value;
+            } else {
+                triggerLabel.textContent = '-- Choose Intended Emotion --';
+            }
+        }
+
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('#genre-custom-trigger') && !e.target.closest('#genre-custom-panel') &&
+                !e.target.closest('#emotion-custom-trigger') && !e.target.closest('#emotion-custom-panel')) {
+                document.querySelectorAll('[id$="-custom-panel"]').forEach(p => p.classList.add('hidden'));
+                document.querySelectorAll('[id$="-trigger-arrow"]').forEach(a => a.classList.remove('rotate-180'));
+            }
+        });
+
+        // Telemetry Progress Bar Animation Controller
+        let progressBarInterval = null;
+
+        function startProgressBarAnimation() {
+            const overlay = document.getElementById("scan-overlay");
+            const fill = document.getElementById("progress-bar-fill");
+            const stepText = document.getElementById("progress-step-text");
+            const percentText = document.getElementById("progress-percent-text");
+            const badge = document.getElementById("progress-status-badge");
+
+            if (!overlay) return;
+
+            overlay.classList.remove("hidden");
+            if (fill) fill.style.width = "15%";
+            if (percentText) percentText.textContent = "15%";
+            if (stepText) stepText.textContent = "⚡ [1/4] EXTRACTING REPRESENTATIVE MIDPOINT FRAME...";
+            if (badge) badge.textContent = "PROCESSING VIDEO... 15%";
+
+            let currentPct = 15;
+            const steps = [
+                { pct: 40, text: "⚡ [2/4] EXECUTING CLIP ViT-B/32 & CINETECHBENCH CLASSIFIERS..." },
+                { pct: 70, text: "⚡ [3/4] CONSULTING LLM DIRECTORIAL RECOMMENDATION ENGINE..." },
+                { pct: 90, text: "⚡ [4/4] EVALUATING SCENE INTENT ALIGNMENT SCORE..." }
+            ];
+
+            let stepIdx = 0;
+            if (progressBarInterval) clearInterval(progressBarInterval);
+
+            progressBarInterval = setInterval(() => {
+                if (stepIdx < steps.length) {
+                    currentPct = steps[stepIdx].pct;
+                    if (fill) fill.style.width = `${currentPct}%`;
+                    if (percentText) percentText.textContent = `${currentPct}%`;
+                    if (stepText) stepText.textContent = steps[stepIdx].text;
+                    if (badge) badge.textContent = `ANALYZING DIMENSIONS... ${currentPct}%`;
+                    stepIdx++;
+                } else if (currentPct < 95) {
+                    currentPct += 1;
+                    if (fill) fill.style.width = `${currentPct}%`;
+                    if (percentText) percentText.textContent = `${currentPct}%`;
+                }
+            }, 400);
+        }
+
+        function finishProgressBarAnimation() {
+            if (progressBarInterval) clearInterval(progressBarInterval);
+            const fill = document.getElementById("progress-bar-fill");
+            const stepText = document.getElementById("progress-step-text");
+            const percentText = document.getElementById("progress-percent-text");
+            const badge = document.getElementById("progress-status-badge");
+            const overlay = document.getElementById("scan-overlay");
+
+            if (fill) fill.style.width = "100%";
+            if (percentText) percentText.textContent = "100%";
+            if (stepText) stepText.textContent = "✓ ANALYSIS COMPLETE! RENDERING RESULTS...";
+            if (badge) badge.textContent = "DONE 100%";
+
+            setTimeout(() => {
+                if (overlay) overlay.classList.add("hidden");
+            }, 450);
+        }
+
+        async function fetchGenreEmotionOptions() {
+            const genreSelect = document.getElementById("genre-input");
+            const emotionSelect = document.getElementById("intent-textarea");
+            const analyzeBtn = document.getElementById("analyze-btn");
+
+            try {
+                let res;
+                try {
+                    res = await fetch(getApiEndpoint("/api/options"));
+                } catch (e) {
+                    res = await fetch("http://localhost:8000/api/options");
+                }
+                if (res.ok) {
+                    genreOptions = await res.json();
+                } else {
+                    throw new Error("Failed to fetch options");
+                }
+            } catch (err) {
+                console.warn("Using default genreOptions map:", err);
+                genreOptions = {
+                    "Romantic Comedy": ["Happiness", "Vulnerability"],
+                    "Romance": ["Warmth", "Vulnerability"],
+                    "Psychological Thriller": ["Anxiety", "Paranoia"],
+                    "Horror": ["Fear", "Dread"],
+                    "Action": ["Excitement", "Tension"],
+                    "Drama": ["Sadness", "Hope"],
+                    "Comedy": ["Joy", "Awkwardness"]
+                };
+            }
+
+            // Populate Genre Select without preselection
+            genreSelect.innerHTML = `<option value="" disabled selected>-- Choose Genre --</option>`;
+            genreSelect.value = "";
+            Object.keys(genreOptions).forEach(g => {
+                const opt = document.createElement("option");
+                opt.value = g;
+                opt.textContent = g;
+                genreSelect.appendChild(opt);
+            });
+
+            // Emotion select and trigger start disabled until a genre is chosen; no default emotion is preselected
+            emotionSelect.innerHTML = `<option value="" disabled selected>-- Choose Genre First --</option>`;
+            emotionSelect.value = "";
+            emotionSelect.disabled = true;
+            analyzeBtn.disabled = true;
+
+            // Render custom dropdowns
+            renderCustomGenreDropdown();
+            renderCustomEmotionDropdown();
+            updateAnalyzeButtonState();
+        }
+
+        function handleGenreChange() {
+            const genreSelect = document.getElementById("genre-input");
+            const emotionSelect = document.getElementById("intent-textarea");
+
+            const selectedGenre = genreSelect.value;
+            // Clear selected emotion when genre changes
+            emotionSelect.value = "";
+
+            if (!selectedGenre || !genreOptions[selectedGenre]) {
+                emotionSelect.disabled = true;
+                emotionSelect.innerHTML = `<option value="" disabled selected>-- Choose Genre First --</option>`;
+                renderCustomGenreDropdown();
+                renderCustomEmotionDropdown();
+                updateAnalyzeButtonState();
+                return;
+            }
+
+            // Rebuild Emotion options from genreOptions[selectedGenre]
+            const availableEmotions = genreOptions[selectedGenre] || [];
+            emotionSelect.innerHTML = `<option value="" disabled selected>-- Choose Intended Emotion --</option>`;
+            availableEmotions.forEach(e => {
+                const opt = document.createElement("option");
+                opt.value = e;
+                opt.textContent = e;
+                emotionSelect.appendChild(opt);
+            });
+
+            // Emotion is enabled once genre is chosen; no default emotion is preselected
+            emotionSelect.disabled = false;
+
+            renderCustomGenreDropdown();
+            renderCustomEmotionDropdown();
+            updateAnalyzeButtonState();
+        }
+
+        function handleEmotionChange() {
+            renderCustomEmotionDropdown();
+            updateAnalyzeButtonState();
+        }
+
+        function updateAnalyzeButtonState() {
+            const genreVal = document.getElementById("genre-input").value;
+            const emotionVal = document.getElementById("intent-textarea").value;
+            const analyzeBtn = document.getElementById("analyze-btn");
+
+            analyzeBtn.disabled = !(genreVal && emotionVal);
+        }
+
+        async function runModelAnalysis() {
+            const genre = document.getElementById("genre-input").value;
+            const emotion = document.getElementById("intent-textarea").value;
+
+            if (!genre || !emotion) {
+                alert("Please select both a valid Genre and Intended Emotion.");
+                return;
+            }
+
+            startProgressBarAnimation();
+
+            try {
+                const formData = new FormData();
+                formData.append("genre", genre);
+                formData.append("emotion", emotion);
+
+                if (selectedVideoFile) {
+                    formData.append("video", selectedVideoFile);
+                } else {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = 320;
+                    canvas.height = 240;
+                    const ctx = canvas.getContext("2d");
+                    ctx.fillStyle = "#883322";
+                    ctx.fillRect(0, 0, 320, 240);
+                    const blob = await new Promise(res => canvas.toBlob(res, "image/jpeg"));
+                    formData.append("video", blob, "sample_frame.jpg");
+                }
+
+                let response;
+                try {
+                    response = await fetch(getApiEndpoint("/api/analyze"), {
+                        method: "POST",
+                        body: formData
+                    });
+                } catch (fetchErr) {
+                    response = await fetch("http://localhost:8000/api/analyze", {
+                        method: "POST",
+                        body: formData
+                    });
+                }
+
+                if (!response.ok) {
+                    const errJson = await response.json();
+                    throw new Error(errJson.detail || `API returned status ${response.status}`);
+                }
+
+                const data = await response.json();
+                renderEvaluationResults(data);
+
+            } catch (err) {
+                alert(`Analysis Error: ${err.message}`);
+                console.error("Analysis Error:", err);
+            } finally {
+                finishProgressBarAnimation();
+            }
+        }
+
+        // Feature-specific independent alternative predictions dropdown toggle
+        function toggleAlternativePredictions(attr) {
+            const panel = document.getElementById(`alt-panel-${attr}`);
+            const arrow = document.getElementById(`alt-arrow-${attr}`);
+            if (!panel) return;
+            const isHidden = panel.classList.contains("hidden");
+            if (isHidden) {
+                panel.classList.remove("hidden");
+                if (arrow) arrow.textContent = "expand_less";
+            } else {
+                panel.classList.add("hidden");
+                if (arrow) arrow.textContent = "expand_more";
+            }
+        }
+
+        function renderAlternativePredictionsList(attr, items) {
+            const listEl = document.getElementById(`alt-list-${attr}`);
+            if (!listEl) return;
+            listEl.innerHTML = "";
+            if (!items || items.length === 0) {
+                listEl.innerHTML = `<span class="text-[11px] font-serif italic text-ink-faded">No alternative predictions available.</span>`;
+                return;
+            }
+
+            items.forEach((item, idx) => {
+                const row = document.createElement("div");
+                row.className = "p-1.5 bg-white border border-border-hairline space-y-1 shadow-[1px_1px_0px_#181816]";
+                
+                const pct = (typeof item.percentage === 'number') 
+                    ? item.percentage 
+                    : (item.probability !== null && item.probability !== undefined ? (item.probability * 100).toFixed(1) : null);
+                
+                const isPrimary = item.is_primary || idx === 0;
+
+                let scoreDisplay = "";
+                let barDisplay = "";
+
+                if (pct !== null) {
+                    scoreDisplay = `<span class="font-mono text-[10px] font-bold text-ink">${pct}%</span>`;
+                    barDisplay = `
+                        <div class="w-full bg-[#EAE5DC] h-1.5 overflow-hidden border border-border-hairline">
+                            <div class="bg-vermilion h-1.5 transition-all duration-300" style="width: ${Math.min(100, Math.max(0, pct))}%"></div>
+                        </div>
+                    `;
+                } else if (item.unsupported) {
+                    scoreDisplay = `<span class="font-mono text-[9px] text-amber-800 font-bold">Unscored</span>`;
+                    barDisplay = `<div class="text-[9px] font-mono text-ink-faded italic">${item.message || 'Probability estimation unsupported'}</div>`;
+                } else {
+                    scoreDisplay = `<span class="font-mono text-[9px] text-ink-faded">N/A</span>`;
+                }
+
+                row.innerHTML = `
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-1.5">
+                            <span class="font-mono text-[10px] font-extrabold ${isPrimary ? 'text-vermilion' : 'text-ink-faded'}">#${idx + 1}</span>
+                            <span class="font-sans text-[11px] font-bold text-ink">${item.label}</span>
+                            ${isPrimary ? '<span class="text-[8px] font-mono uppercase bg-vermilion text-white px-1 py-0.2 font-extrabold">PRIMARY</span>' : ''}
+                        </div>
+                        ${scoreDisplay}
+                    </div>
+                    ${barDisplay}
+                `;
+                listEl.appendChild(row);
+            });
+        }
+
+        let lastAnalysisData = null;
+
+        function renderEvaluationResults(data) {
+            lastAnalysisData = data;
+            const emptyState = document.getElementById("empty-monitor-state");
+            if (emptyState) emptyState.classList.add("hidden");
+
+            const btnText = document.getElementById("save-btn-text");
+            if (btnText) btnText.textContent = "Save Take to Profile Dossier";
+
+            if (data.frame_data_url) {
+                currentFrameDataUrl = data.frame_data_url;
+                const imgEl = document.getElementById("shot-media-img");
+                const vidEl = document.getElementById("shot-media-video");
+                if (imgEl) {
+                    imgEl.src = data.frame_data_url;
+                    imgEl.classList.remove("hidden");
+                }
+                if (vidEl) {
+                    vidEl.classList.add("hidden");
+                }
+            }
+
+            const score = data.score || 0;
+            document.getElementById("resonance-score").innerHTML = `${score}<span class="text-vermilion text-3xl sm:text-4xl font-bold">/100</span>`;
+            document.getElementById("badge-score").textContent = score;
+
+            const statusEl = document.getElementById("alignment-status");
+            const descEl = document.getElementById("alignment-desc");
+            if (score >= 70) {
+                statusEl.className = "font-display font-extrabold text-sm uppercase text-vermilion";
+                statusEl.textContent = "HIGH ALIGNMENT";
+                descEl.textContent = "Visual attributes effectively support the intended genre & emotion profile.";
+            } else if (score >= 45) {
+                statusEl.className = "font-display font-extrabold text-sm uppercase text-vermilion";
+                statusEl.textContent = "MODERATE ALIGNMENT";
+                descEl.textContent = "Visual attributes partially align with key genre expectations.";
+            } else {
+                statusEl.className = "font-display font-extrabold text-sm uppercase text-vermilion";
+                statusEl.textContent = "SUBTLE ALIGNMENT";
+                descEl.textContent = "Several detected attributes contrast with preferred genre conventions.";
+            }
+
+            const c = data.cinematography || {};
+            document.getElementById("detected-shot-size").textContent = c.scale || "medium";
+            document.getElementById("detected-camera-angle").textContent = c.angle || "eye-level";
+            document.getElementById("detected-composition").textContent = c.composition || "Rule of Thirds";
+            document.getElementById("detected-lighting-quality").textContent = c.lighting_quality || "Soft Light";
+            document.getElementById("detected-lighting-intensity").textContent = c.lighting_intensity || "High Key";
+            const moveEl = document.getElementById("detected-camera-movement");
+            if (moveEl) moveEl.textContent = c.movement || "locked";
+
+            // Render Matches
+            const matchesDiv = document.getElementById("matches-container");
+            matchesDiv.innerHTML = "";
+            if (data.matches && data.matches.length > 0) {
+                data.matches.forEach(m => {
+                    const item = document.createElement("div");
+                    item.className = "p-2.5 bg-green-50 border border-green-300 text-green-900 font-medium rounded-xs";
+                    item.innerHTML = `<strong>${m.attribute.toUpperCase()} (${m.detected})</strong>: Matches expected ${m.expected}`;
+                    matchesDiv.appendChild(item);
+                });
+            } else {
+                matchesDiv.innerHTML = `<div class="p-2 bg-zinc-100 text-zinc-600 font-mono text-[11px]">No exact preferred matches detected.</div>`;
+            }
+
+            // Render Mismatches
+            const mismatchesDiv = document.getElementById("mismatches-container");
+            mismatchesDiv.innerHTML = "";
+            if (data.mismatches && data.mismatches.length > 0) {
+                data.mismatches.forEach(m => {
+                    const item = document.createElement("div");
+                    item.className = "p-2.5 bg-vermilion-soft border border-vermilion/40 text-vermilion font-medium rounded-xs";
+                    item.innerHTML = `<strong>${m.attribute.toUpperCase()} (${m.detected})</strong>: Expected ${m.expected}`;
+                    mismatchesDiv.appendChild(item);
+                });
+            } else {
+                mismatchesDiv.innerHTML = `<div class="p-2 bg-green-50 text-green-800 font-mono text-[11px]">All visual dimensions align cleanly with the target profile.</div>`;
+            }
+
+            // Render Alternative Predictions for all 5 features
+            const topPreds = data.top_predictions || (data.cinematography && data.cinematography.top_predictions) || {};
+            ['scale', 'angle', 'composition', 'lighting_quality', 'lighting_intensity'].forEach(attr => {
+                if (topPreds[attr]) {
+                    renderAlternativePredictionsList(attr, topPreds[attr]);
+                }
+            });
+
+            // Render LLM Recommendations (or structured fallback)
+            const llm = data.llm_recommendations || {};
+            const badgeEl = document.getElementById("llm-provider-badge");
+            if (badgeEl) {
+                if (llm.provider) {
+                    badgeEl.textContent = (llm.provider.toUpperCase().includes("FALLBACK") ? "FALLBACK ENGINE" : llm.provider.toUpperCase());
+                } else {
+                    badgeEl.textContent = "AI CONSULTANT";
+                }
+            }
+
+            const expEl = document.getElementById("llm-explanation-text");
+            if (expEl) {
+                expEl.textContent = llm.overall_explanation || 
+                    "The scene's visual attributes have been assessed against the target genre and emotion profile.";
+            }
+
+            // Strengths
+            const strengthsWrap = document.getElementById("llm-strengths-wrapper");
+            const strengthsList = document.getElementById("llm-strengths-list");
+            if (strengthsWrap && strengthsList) {
+                strengthsList.innerHTML = "";
+                if (llm.strengths && llm.strengths.length > 0) {
+                    strengthsWrap.classList.remove("hidden");
+                    llm.strengths.forEach(s => {
+                        const li = document.createElement("li");
+                        li.textContent = s;
+                        strengthsList.appendChild(li);
+                    });
+                } else {
+                    strengthsWrap.classList.add("hidden");
+                }
+            }
+
+            // Suggestions
+            const suggList = document.getElementById("llm-suggestions-list");
+            if (suggList) {
+                suggList.innerHTML = "";
+                const suggestions = llm.suggestions || [];
+                if (suggestions.length > 0) {
+                    suggestions.forEach(s => {
+                        const card = document.createElement("div");
+                        card.className = "p-2.5 bg-white border border-border-hairline shadow-[1px_1px_0px_#181816] space-y-1";
+                        
+                        const pri = (s.priority || "Medium").toUpperCase();
+                        let badgeColor = "bg-zinc-700 text-white";
+                        if (pri === "HIGH") badgeColor = "bg-vermilion text-white";
+                        else if (pri === "MEDIUM") badgeColor = "bg-amber-600 text-white";
+                        else if (pri === "LOW") badgeColor = "bg-emerald-700 text-white";
+
+                        card.innerHTML = `
+                            <div class="flex items-center justify-between text-xs mb-1">
+                                <span class="font-sans font-bold text-ink">${s.change}</span>
+                                <span class="text-[8px] font-mono font-extrabold px-1.5 py-0.5 ${badgeColor}">${pri} PRIORITY</span>
+                            </div>
+                            <p class="font-serif italic text-[11px] text-ink-light leading-relaxed">${s.reason}</p>
+                        `;
+                        suggList.appendChild(card);
+                    });
+                } else if (data.recommendations && data.recommendations.length > 0) {
+                    data.recommendations.forEach(r => {
+                        const card = document.createElement("div");
+                        card.className = "p-2 bg-white border border-border-hairline text-xs font-serif italic text-ink-light";
+                        card.textContent = r;
+                        suggList.appendChild(card);
+                    });
+                } else {
+                    suggList.innerHTML = `<div class="p-2 bg-zinc-50 border border-zinc-200 text-xs font-serif italic text-zinc-600">No adjustments recommended; visual framing strongly reinforces scene intent.</div>`;
+                }
+            }
+
+            // Uncertainty / Contested feature notes
+            const uncWrap = document.getElementById("llm-uncertainty-wrapper");
+            const uncList = document.getElementById("llm-uncertainty-list");
+            if (uncWrap && uncList) {
+                uncList.innerHTML = "";
+                if (llm.uncertainty_notes && llm.uncertainty_notes.length > 0) {
+                    uncWrap.classList.remove("hidden");
+                    llm.uncertainty_notes.forEach(u => {
+                        const li = document.createElement("li");
+                        li.textContent = u;
+                        uncList.appendChild(li);
+                    });
+                } else {
+                    uncWrap.classList.add("hidden");
+                }
+            }
+
+            // Render Recommendations (legacy list kept for compatibility)
+            const recDiv = document.getElementById("recommendations-container");
+            if (recDiv) {
+                recDiv.innerHTML = "";
+                if (data.recommendations && data.recommendations.length > 0) {
+                    data.recommendations.forEach(r => {
+                        const li = document.createElement("li");
+                        li.textContent = r;
+                        recDiv.appendChild(li);
+                    });
+                } else {
+                    recDiv.innerHTML = `<li>Maintain current cinematography choices to preserve established visual mood.</li>`;
+                }
+            }
+        }
+
+        let currentFrameDataUrl = null;
+
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const emptyState = document.getElementById("empty-monitor-state");
+            if (emptyState) emptyState.classList.add("hidden");
+
+            selectedVideoFile = file;
+            const fileURL = URL.createObjectURL(file);
+            const imgEl = document.getElementById("shot-media-img");
+            const vidEl = document.getElementById("shot-media-video");
+
+            if (file.type.startsWith("video/")) {
+                imgEl.classList.add("hidden");
+                vidEl.classList.remove("hidden");
+                vidEl.src = fileURL;
+                vidEl.play();
+                isPlaying = true;
+                document.getElementById("play-icon").textContent = "pause";
+
+                vidEl.onloadeddata = () => {
+                    vidEl.currentTime = Math.min(2.0, (vidEl.duration || 4.0) / 2);
+                };
+                vidEl.onseeked = () => {
+                    try {
+                        const canvas = document.createElement("canvas");
+                        canvas.width = vidEl.videoWidth || 640;
+                        canvas.height = vidEl.videoHeight || 360;
+                        const ctx = canvas.getContext("2d");
+                        ctx.drawImage(vidEl, 0, 0, canvas.width, canvas.height);
+                        currentFrameDataUrl = canvas.toDataURL("image/jpeg");
+                    } catch (e) {
+                        console.warn("Video frame capture notice:", e);
+                    }
+                };
+            } else {
+                vidEl.classList.add("hidden");
+                imgEl.classList.remove("hidden");
+                imgEl.src = fileURL;
+
+                const reader = new FileReader();
+                reader.onload = function (e) {
+                    currentFrameDataUrl = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+
+            document.getElementById("scene-title-header").textContent = `Uploaded Reel: ${file.name}`;
+            // NOTE: Do not automatically run analysis here — analysis runs ONLY when user selects Genre + Emotion and clicks "Analyze Cinematography"
+        }
+
+        function togglePlayPause() {
+            const vidEl = document.getElementById("shot-media-video");
+            const icon = document.getElementById("play-icon");
+            if (vidEl && !vidEl.classList.contains("hidden")) {
+                if (vidEl.paused) {
+                    vidEl.play();
+                    icon.textContent = "pause";
+                } else {
+                    vidEl.pause();
+                    icon.textContent = "play_arrow";
+                }
+            }
+        }
+
+        function captureCurrentMonitorFrame() {
+            if (currentFrameDataUrl) return currentFrameDataUrl;
+
+            const vidEl = document.getElementById("shot-media-video");
+            const imgEl = document.getElementById("shot-media-img");
+
+            if (vidEl && !vidEl.classList.contains("hidden") && vidEl.videoWidth) {
+                try {
+                    const canvas = document.createElement("canvas");
+                    canvas.width = vidEl.videoWidth;
+                    canvas.height = vidEl.videoHeight;
+                    const ctx = canvas.getContext("2d");
+                    ctx.drawImage(vidEl, 0, 0, canvas.width, canvas.height);
+                    return canvas.toDataURL("image/jpeg");
+                } catch (e) { }
+            }
+
+            if (imgEl && imgEl.src) {
+                return imgEl.src;
+            }
+
+            return 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80';
+        }
+
+        function saveCurrentTake() {
+            const genre = document.getElementById("genre-input").value;
+            const emotion = document.getElementById("intent-textarea").value;
+            const titleHeader = document.getElementById("scene-title-header").textContent;
+
+            if (!genre || !emotion) {
+                alert("Please select both a genre and emotion before saving.");
+                return;
+            }
+
+            const takesKey = 'cinematheque_saved_takes';
+            let savedTakes = [];
+            try {
+                savedTakes = JSON.parse(localStorage.getItem(takesKey) || '[]');
+            } catch (e) {
+                savedTakes = [];
+            }
+
+            const c = (lastAnalysisData && lastAnalysisData.cinematography) || {};
+            const score = (lastAnalysisData && lastAnalysisData.score) || 75;
+            const actualThumbnail = captureCurrentMonitorFrame();
+
+            const newTake = {
+                title: titleHeader ? titleHeader.replace(/^Uploaded Reel:\s*/i, '') : `${genre} Study`,
+                genre: genre,
+                emotion: emotion,
+                score: score,
+                scale: c.scale || 'Close-Up',
+                lighting: c.lighting_intensity || 'Low Key',
+                reelTag: `TAKE NO. ${String(savedTakes.length + 1).padStart(3, '0')} // REEL ${String.fromCharCode(65 + (savedTakes.length % 26))}`,
+                tags: [genre, emotion, c.scale || 'Close-Up', c.angle || 'Eye-Level'],
+                thumbnail: actualThumbnail,
+                timecode: `TC 00:${Math.floor(Math.random() * 50).toString().padStart(2, '0')}:${Math.floor(Math.random() * 50).toString().padStart(2, '0')}`,
+                savedAt: new Date().toISOString()
+            };
+
+            savedTakes.unshift(newTake);
+            localStorage.setItem(takesKey, JSON.stringify(savedTakes));
+
+            const btnText = document.getElementById("save-btn-text");
+            if (btnText) btnText.textContent = "✓ Take Saved to Dossier!";
+        }
+
+        function exportEditorialLogSheet() {
+            window.print();
+        }
+
+        window.addEventListener("DOMContentLoaded", () => {
+            fetchGenreEmotionOptions();
+
+            const userStr = localStorage.getItem('activeUser') || localStorage.getItem('registeredUser');
+            if (userStr) {
+                try {
+                    const user = JSON.parse(userStr);
+                    if (user.name) {
+                        const navName = document.getElementById('nav-user-name');
+                        if (navName) navName.textContent = user.name;
+                    }
+                    if (user.photo) {
+                        const navImg = document.getElementById('nav-avatar-img');
+                        const navIcon = document.getElementById('nav-avatar-icon');
+                        if (navImg) {
+                            navImg.src = user.photo;
+                            navImg.classList.remove('hidden');
+                            if (navIcon) navIcon.classList.add('hidden');
+                        }
+                    }
+                } catch (e) { }
+            }
+        });
+    </script>
+</body>
+
+</html>

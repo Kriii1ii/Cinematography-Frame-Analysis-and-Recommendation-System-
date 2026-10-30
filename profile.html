@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Kritika — In Other Words / Cinémathèque Gazette</title>
+    <!-- Material Symbols Outlined -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Typography matching broadsheet reference: Bricolage Grotesque, Newsreader, Space Mono, Alex Brush -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Alex+Brush&amp;family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800;12..96,900&amp;family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,600;1,6..72,400&amp;family=Space+Mono:wght@400;700&amp;family=Work+Sans:wght@500;600;700;800&amp;display=swap"
+        rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "surface": "#FAF7F2",
+                        "background": "#FAF7F2",
+                        "paper": "#FAF7F2",
+                        "paper-sheet": "#F4EFE6",
+                        "primary": "#b91c1c", /* Bold Retro Scarlet / Vermilion from zine header */
+                        "primary-dark": "#93000b",
+                        "ink": "#181816",
+                        "ink-muted": "#55524c",
+                        "ink-faint": "#8e8980",
+                        "newsprint-rule": "#2a2723",
+                        "newsprint-rule-light": "#d8d2c6",
+                        "accent-yellow": "#F7DC6F",
+                        "accent-kraft": "#E8DEC8"
+                    },
+                    "fontFamily": {
+                        "headline": ["Bricolage Grotesque", "Impact", "sans-serif"],
+                        "editorial": ["Newsreader", "serif"],
+                        "mono": ["Space Mono", "monospace"],
+                        "sans": ["Work Sans", "sans-serif"],
+                        "script": ["Alex Brush", "cursive"]
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Newspaper double border & styling rules */
+        .border-double-thick {
+            border-style: double;
+            border-width: 4px;
+            border-color: #181816;
+        }
+
+        .crossword-cell {
+            aspect-ratio: 1 / 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #181816;
+            font-family: 'Space Mono', monospace;
+            font-size: 10px;
+            font-weight: 700;
+            background: #ffffff;
+            color: #181816;
+            position: relative;
+        }
+
+        .crossword-cell.black {
+            background: #181816;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-[#FAF7F2] text-ink antialiased selection:bg-primary selection:text-white min-h-screen flex flex-col font-sans">
+    <!-- Top Broadsheet Masthead Header -->
+    <header class="w-full border-b border-ink bg-[#FAF7F2]">
+        <!-- Micro Meta Bar -->
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 py-1.5 flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-ink-muted border-b border-newsprint-rule-light">
+            <div class="flex items-center gap-3">
+                <span>Vol. VII — Issue No. 42</span>
+                <span>•</span>
+                <span class="hidden sm:inline">Paris // Cinémathèque Special Dossier</span>
+            </div>
+            <div class="font-bold text-ink">
+                PRINTED ON NATURAL COTTON NEWSPRINT
+            </div>
+            <div class="flex items-center gap-4">
+                <span>Curated Cycle 2024</span>
+                <a class="hover:text-primary transition-colors" href="#archives">Digital Edition</a>
+            </div>
+        </div>
+        <!-- Retro Big Scarlet Masthead (Echoing 'In Other Words' reference) -->
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 pt-4 pb-3 flex flex-col md:flex-row items-center justify-between gap-4">
+            <div class="flex flex-col items-center md:items-start">
+                <span class="text-xs font-mono uppercase tracking-[0.25em] text-ink-muted font-bold -mb-1">CINÉMATHÈQUE
+                    GAZETTE &amp; ARCHIVES</span>
+                <h1
+                    class="text-5xl sm:text-6xl md:text-7xl font-headline font-black tracking-tight text-primary drop-shadow-[2px_2px_0px_#181816] uppercase transform -rotate-1 md:-rotate-0">
+                    In Other Takes
+                </h1>
+            </div>
+            <!-- Quick Actions -->
+            <div class="flex items-center gap-3">
+                <a class="font-mono text-xs font-bold uppercase tracking-wider px-3.5 py-2 border-2 border-ink bg-white hover:bg-ink hover:text-white transition-all shadow-[2px_2px_0px_#181816]"
+                    href="main.html">
+                    ← Studio Workbench
+                </a>
+                <a class="font-mono text-xs font-bold uppercase tracking-wider px-3.5 py-2 bg-primary text-white border-2 border-ink hover:bg-primary-dark transition-all shadow-[2px_2px_0px_#181816]"
+                    href="login.html" onclick="localStorage.removeItem('activeUser');">
+                    Sign Out
+                </a>
+            </div>
+        </div>
+        <!-- Thick Newspaper Rule Divider -->
+        <div
+            class="border-t-2 border-b border-ink py-1 max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center text-xs font-headline uppercase font-bold tracking-wider text-ink">
+            <span>Section 1: Filmmaker Dossier</span>
+            <span id="header-feature-study" class="hidden sm:inline">Feature Study: Registered Director</span>
+            <span>Reels &amp; Sequence Logs</span>
+        </div>
+    </header>
+    <!-- Main Newspaper Page Canvas -->
+    <main class="flex-grow w-full max-w-7xl mx-auto px-4 sm:px-6 py-8">
+        <!-- Top Director Dossier (Compact & Perfectly Aligned Graphic Layout) -->
+        <section class="border-b-2 border-ink pb-8 mb-8 bg-white border-2 border-ink p-6 shadow-[5px_5px_0px_#181816]">
+            <div class="flex flex-col md:flex-row items-center md:items-start gap-6 lg:gap-8">
+                <!-- Left: Compact Director Photo Frame -->
+                <div class="shrink-0">
+                    <div
+                        class="w-36 h-44 sm:w-40 sm:h-48 border-2 border-ink bg-white p-1.5 shadow-[3px_3px_0px_#181816] relative">
+                        <div class="w-full h-full overflow-hidden border border-ink bg-ink">
+                            <img id="profile-img" alt="Portrait of Registered Director"
+                                class="w-full h-full object-cover grayscale contrast-125"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpH8zRVVZVkGVGoirFRz9JHr4SjEB5gZ7aoWl64VkoQs9xbihF0Xx7JW2_uRV93naf_gXnuqJkYKIsWSi5wlgjHmEfs_JfW2zqt7mEnTy4klV5u6HUdTwBbsZdTlXnJ_-NBAtcRuox8sfdKVjALH8qX0X3n1vISKjsUEHqKSP6worxWD71F-nWtk5NmJUk1yy4wQncs3yutA6RmK2BJDfMCUjF6Y0j2k_IZ_k6Kc6TTMTNsH8jfCIv" />
+                        </div>
+                        <span
+                            class="absolute -bottom-2 -right-2 bg-primary text-white text-[9px] font-mono uppercase px-1.5 py-0.5 border border-ink font-bold">
+                            VERIFIED
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Right: Editorial Bio & Stats Grid -->
+                <div class="flex-grow flex flex-col justify-between space-y-4 text-center md:text-left">
+                    <div>
+                        <!-- Dossier Category Tag & Actions -->
+                        <div class="flex flex-wrap items-center justify-between gap-2 mb-1.5">
+                            <div class="flex flex-wrap items-center gap-2">
+                                <span id="profile-role"
+                                    class="bg-primary text-white text-[10px] font-mono uppercase tracking-wider px-2 py-0.5 font-bold">
+                                    Cinematographer &amp; Director
+                                </span>
+                                <span id="profile-ref" class="text-xs font-mono uppercase tracking-widest text-ink-muted">
+                                    REF. ER-8840 • PARIS // BERLIN
+                                </span>
+                            </div>
+                            <button type="button" onclick="openEditProfileModal()" class="font-mono text-xs font-bold uppercase tracking-wider px-3 py-1 bg-ink text-white hover:bg-primary border border-ink shadow-[2px_2px_0px_#181816] transition-all flex items-center gap-1 cursor-pointer">
+                                <span class="material-symbols-outlined text-sm">edit</span>
+                                <span>Edit Profile</span>
+                            </button>
+                        </div>
+                        <!-- Director Name -->
+                        <h2 id="profile-name"
+                            class="text-3xl sm:text-4xl lg:text-5xl font-headline font-extrabold tracking-tight text-ink uppercase leading-none mb-2">
+                            Elena Rostova
+                        </h2>
+                        <!-- Poetic Quote & Editorial Note -->
+                        <p id="profile-bio"
+                            class="font-editorial italic text-base sm:text-lg text-ink-muted leading-relaxed">
+                            "Light and shadow speak where dialogue rests." — Exploring natural light, negative space,
+                            low-key emulsions, and optical choreography.
+                        </p>
+                    </div>
+
+                    <!-- Clean Profile Info Bar (Unnecessary stats 88% Resonance Score & 40mm Prime Anamorphic removed) -->
+                    <div
+                        class="border-t-2 border-b-2 border-ink py-3 flex flex-wrap items-center justify-between gap-4 bg-[#FAF7F2] px-4">
+                        <div class="flex items-center space-x-3">
+                            <div id="profile-takes-count"
+                                class="text-2xl sm:text-3xl font-headline font-black text-primary leading-none">
+                                48
+                            </div>
+                            <div
+                                class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider text-ink-muted font-bold">
+                                Takes Saved
+                            </div>
+                        </div>
+                        <div class="flex items-center space-x-2 font-mono text-xs">
+                            <span class="text-ink-muted uppercase font-bold text-[10px]">Pass Status:</span>
+                            <span
+                                class="px-2 py-0.5 bg-primary text-white font-bold text-[10px] uppercase border border-ink">
+                                VERIFIED MEMBER
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!-- MAIN SAVED HISTORY SECTION: ARCHIVAL TAKES & STUDIES -->
+        <section class="mb-12">
+            <div class="flex items-center justify-between border-b-2 border-ink pb-2 mb-6">
+                <div>
+                    <span class="text-xs font-mono uppercase tracking-widest text-primary font-bold block">
+                        ★ SAVED DIRECTORS HISTORY LOG
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-headline font-black uppercase text-ink">
+                        Archival Takes &amp; Studies
+                    </h3>
+                </div>
+                <span id="saved-takes-count-badge" class="font-mono text-xs uppercase text-ink-muted hidden sm:inline font-bold">
+                    0 Saved Sequence Analyses
+                </span>
+            </div>
+
+            <!-- Dynamic Grid of Saved Takes -->
+            <div id="saved-takes-grid" class="grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+                <!-- Dynamically populated from localStorage -->
+            </div>
+        </section>
+
+    </main>
+    <!-- Broadsheet Newspaper Colophon Footer -->
+    <footer class="w-full border-t-2 border-ink bg-[#FAF7F2] mt-auto">
+        <div
+            class="max-w-7xl mx-auto px-4 sm:px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4 text-xs font-mono uppercase tracking-wider text-ink">
+            <div class="text-center md:text-left">
+                <strong>FOLIO NO. XXIV</strong> — CINÉMATHÈQUE GAZETTE. PRINTED DIGITALLY ON RECYCLED COTTON BROADSHEET.
+            </div>
+            <div class="flex flex-wrap justify-center items-center gap-6">
+                <a class="hover:text-primary hover:underline" href="#colophon">Colophon</a>
+                <a class="hover:text-primary hover:underline" href="#catalog-index">Catalog Index</a>
+                <a class="hover:text-primary hover:underline" href="#lens-specs">Lens Specs</a>
+                <a class="hover:text-primary hover:underline" href="#curatorial-inquiries">Curatorial Inquiries</a>
+            </div>
+        </div>
+    <!-- Edit Profile Broadsheet Modal -->
+    <div id="edit-profile-modal" class="fixed inset-0 bg-ink/80 backdrop-blur-xs hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-[#FAF7F2] border-4 border-ink max-w-lg w-full p-6 shadow-[8px_8px_0px_#181816] relative font-sans">
+            <div class="flex items-center justify-between border-b-2 border-ink pb-3 mb-4">
+                <h3 class="font-headline font-black text-xl uppercase text-ink flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary">edit_note</span>
+                    <span>Edit Director Dossier</span>
+                </h3>
+                <button type="button" onclick="closeEditProfileModal()" class="text-ink hover:text-primary font-bold cursor-pointer">
+                    <span class="material-symbols-outlined">close</span>
+                </button>
+            </div>
+
+            <form id="edit-profile-form" onsubmit="saveProfileChanges(event)" class="space-y-4">
+                <!-- Photo Upload Row -->
+                <div class="space-y-1">
+                    <label class="block font-headline font-bold text-xs uppercase text-ink">Dossier Portrait / Photo</label>
+                    <div class="flex items-center space-x-3 bg-white border-2 border-ink p-2">
+                        <img id="edit-photo-preview" src="" class="w-12 h-14 object-cover border border-ink shrink-0 bg-ink" />
+                        <div class="flex-1 space-y-1">
+                            <label for="edit-photo-file" class="inline-block px-3 py-1 bg-ink text-white font-mono text-[10px] uppercase font-bold cursor-pointer hover:bg-primary border border-ink transition-colors">
+                                Upload New Photo...
+                            </label>
+                            <input type="file" id="edit-photo-file" accept="image/*" class="hidden" onchange="previewEditPhoto(event)" />
+                            <span id="edit-photo-name" class="block font-mono text-[9px] text-ink-muted">Select image file (PNG, JPG)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Name Field -->
+                <div class="space-y-1">
+                    <label class="block font-headline font-bold text-xs uppercase text-ink">Director Name *</label>
+                    <input id="edit-name-input" type="text" required class="w-full bg-white border-2 border-ink px-3 py-2 text-ink font-serif text-sm focus:outline-none focus:border-primary" />
+                </div>
+
+                <!-- Role Field -->
+                <div class="space-y-1">
+                    <label class="block font-headline font-bold text-xs uppercase text-ink">Role / Title</label>
+                    <input id="edit-role-input" type="text" placeholder="e.g. Director of Photography" class="w-full bg-white border-2 border-ink px-3 py-2 text-ink font-serif text-sm focus:outline-none focus:border-primary" />
+                </div>
+
+                <!-- Poetic Statement / Bio Field -->
+                <div class="space-y-1">
+                    <label class="block font-headline font-bold text-xs uppercase text-ink">Poetic Statement / Bio</label>
+                    <textarea id="edit-bio-input" rows="2" placeholder="e.g. Exploring low-key emulsions..." class="w-full bg-white border-2 border-ink px-3 py-2 text-ink font-editorial italic text-sm focus:outline-none focus:border-primary"></textarea>
+                </div>
+
+                <!-- Buttons -->
+                <div class="pt-3 border-t-2 border-ink flex justify-end space-x-3 font-mono text-xs">
+                    <button type="button" onclick="closeEditProfileModal()" class="px-4 py-2 border-2 border-ink bg-white hover:bg-ink hover:text-white uppercase font-bold transition-all cursor-pointer">
+                        Cancel
+                    </button>
+                    <button type="submit" class="px-5 py-2 border-2 border-ink bg-primary text-white hover:bg-primary-dark uppercase font-bold shadow-[2px_2px_0px_#181816] transition-all cursor-pointer">
+                        Save Changes
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!-- Dynamic Registered Profile Loader Script -->
+    <script>
+        let editPhotoDataUrl = null;
+
+        function openEditProfileModal() {
+            const userStr = localStorage.getItem('activeUser') || localStorage.getItem('registeredUser');
+            const user = userStr ? JSON.parse(userStr) : {};
+
+            document.getElementById('edit-name-input').value = user.name || '';
+            document.getElementById('edit-role-input').value = user.role || '';
+            document.getElementById('edit-bio-input').value = user.bio || '';
+            
+            const preview = document.getElementById('edit-photo-preview');
+            if (preview) preview.src = user.photo || '';
+            editPhotoDataUrl = user.photo || null;
+
+            const photoNameLabel = document.getElementById('edit-photo-name');
+            if (photoNameLabel) {
+                photoNameLabel.textContent = user.photo ? 'Current photo loaded' : 'Select image file (PNG, JPG)';
+            }
+
+            document.getElementById('edit-profile-modal').classList.remove('hidden');
+        }
+
+        function closeEditProfileModal() {
+            document.getElementById('edit-profile-modal').classList.add('hidden');
+        }
+
+        function previewEditPhoto(event) {
+            const file = event.target.files && event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const img = new Image();
+                    img.onload = function() {
+                        const canvas = document.createElement('canvas');
+                        const maxW = 300;
+                        const maxH = 360;
+                        let width = img.width;
+                        let height = img.height;
+
+                        if (width > height) {
+                            if (width > maxW) {
+                                height = Math.round((height * maxW) / width);
+                                width = maxW;
+                            }
+                        } else {
+                            if (height > maxH) {
+                                width = Math.round((width * maxH) / height);
+                                height = maxH;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        editPhotoDataUrl = canvas.toDataURL('image/jpeg', 0.85);
+                        const preview = document.getElementById('edit-photo-preview');
+                        if (preview) preview.src = editPhotoDataUrl;
+                        const photoNameLabel = document.getElementById('edit-photo-name');
+                        if (photoNameLabel) photoNameLabel.textContent = file.name;
+                    };
+                    img.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        async function saveProfileChanges(event) {
+            event.preventDefault();
+
+            const userStr = localStorage.getItem('activeUser') || localStorage.getItem('registeredUser');
+            const existingUser = userStr ? JSON.parse(userStr) : {};
+
+            const updatedName = document.getElementById('edit-name-input').value.trim() || existingUser.name || 'Director';
+            const updatedRole = document.getElementById('edit-role-input').value.trim();
+            const updatedBio = document.getElementById('edit-bio-input').value.trim();
+
+            const updatedUser = {
+                ...existingUser,
+                name: updatedName,
+                email: existingUser.email || (updatedName.toLowerCase().replace(/\s+/g, '') + '@cinema.org'),
+                password: existingUser.password || 'Password123',
+                role: updatedRole,
+                bio: updatedBio,
+                photo: editPhotoDataUrl || existingUser.photo,
+                ref: existingUser.ref || ('REF. ' + updatedName.substring(0, 2).toUpperCase() + '-8840 • PARIS // BERLIN')
+            };
+
+            // Safely save locally
+            try {
+                localStorage.setItem('activeUser', JSON.stringify(updatedUser));
+                localStorage.setItem('registeredUser', JSON.stringify(updatedUser));
+            } catch (storageErr) {
+                console.warn('LocalStorage quota notice:', storageErr);
+            }
+
+            // Always update UI & close modal
+            renderUserProfile(updatedUser);
+            closeEditProfileModal();
+
+            // Sync to backend database.json
+            try {
+                const apiEndpoint = (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '8000')) ? 'http://localhost:8000/api/auth/register' : '/api/auth/register';
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 3000);
+                
+                await fetch(apiEndpoint, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(updatedUser),
+                    signal: controller.signal
+                });
+                clearTimeout(timeoutId);
+            } catch(err) {
+                console.warn('Backend profile edit sync notice:', err);
+            }
+        }
+        function renderUserProfile(user) {
+            if (!user) return;
+
+            if (user.name) {
+                const nameElem = document.getElementById('profile-name');
+                if (nameElem) nameElem.textContent = user.name;
+
+                const headerStudy = document.getElementById('header-feature-study');
+                if (headerStudy) headerStudy.textContent = 'Feature Study: ' + user.name;
+
+                document.title = user.name + ' — In Other Takes / Cinémathèque Gazette';
+            }
+
+            if (user.photo) {
+                const photoElem = document.getElementById('profile-img');
+                if (photoElem) {
+                    photoElem.src = user.photo;
+                    photoElem.alt = 'Portrait of ' + (user.name || 'Registered Member');
+                }
+            }
+
+            const roleElem = document.getElementById('profile-role');
+            if (roleElem) {
+                if (user.role && user.role.trim()) {
+                    roleElem.textContent = user.role;
+                    roleElem.classList.remove('hidden');
+                } else {
+                    roleElem.classList.add('hidden');
+                }
+            }
+
+            if (user.ref) {
+                const refElem = document.getElementById('profile-ref');
+                if (refElem) {
+                    refElem.textContent = user.ref + (user.email ? ' • ' + user.email : '');
+                }
+            }
+
+            const bioElem = document.getElementById('profile-bio');
+            if (bioElem) {
+                bioElem.textContent = user.bio || '';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', async function () {
+            const userStr = localStorage.getItem('activeUser') || localStorage.getItem('registeredUser');
+            let currentUser = userStr ? JSON.parse(userStr) : null;
+
+            if (currentUser) {
+                renderUserProfile(currentUser);
+            }
+
+            // Sync with backend database.json if available
+            try {
+                const apiEndpoint = (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '8000')) ? 'http://localhost:8000/api/auth/users' : '/api/auth/users';
+                const res = await fetch(apiEndpoint);
+                if (res.ok) {
+                    const users = await res.json();
+                    if (Array.isArray(users) && users.length > 0) {
+                        const matched = currentUser 
+                            ? users.find(u => (u.email && currentUser.email && u.email.toLowerCase() === currentUser.email.toLowerCase()) || (u.id && currentUser.id && u.id === currentUser.id))
+                            : users[users.length - 1];
+                        if (matched) {
+                            const mergedUser = { ...matched, ...currentUser };
+                            localStorage.setItem('activeUser', JSON.stringify(mergedUser));
+                            renderUserProfile(mergedUser);
+                        }
+                    }
+                }
+            } catch(e) {
+                console.warn('Backend user profile fetch notice:', e);
+            }
+
+            renderSavedTakes();
+        });
+
+        function getSavedTakes() {
+            try {
+                const data = localStorage.getItem('cinematheque_saved_takes');
+                return data ? JSON.parse(data) : [];
+            } catch(e) {
+                return [];
+            }
+        }
+
+        function renderSavedTakes() {
+            const grid = document.getElementById('saved-takes-grid');
+            const takesCountElem = document.getElementById('profile-takes-count');
+            const badgeCountElem = document.getElementById('saved-takes-count-badge');
+
+            if (!grid) return;
+
+            const takes = getSavedTakes();
+
+            if (takesCountElem) takesCountElem.textContent = takes.length;
+            if (badgeCountElem) badgeCountElem.textContent = `${takes.length} Saved Sequence ${takes.length === 1 ? 'Analysis' : 'Analyses'}`;
+
+            if (takes.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full border-2 border-dashed border-ink bg-white p-8 text-center shadow-[4px_4px_0px_#181816]">
+                        <span class="material-symbols-outlined text-4xl text-ink-faint mb-2">video_library</span>
+                        <h4 class="font-headline font-bold text-xl uppercase text-ink mb-1">No Saved Takes in Dossier</h4>
+                        <p class="font-editorial text-sm text-ink-muted max-w-md mx-auto mb-4">
+                            You haven't saved any cinematography frame evaluations yet. Run an analysis on the Studio Workbench and save your take to view it here.
+                        </p>
+                        <a href="main.html" class="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-wider px-5 py-2.5 bg-primary text-white border-2 border-ink shadow-[2px_2px_0px_#181816] hover:bg-primary-dark transition-all">
+                            Go to Studio Workbench →
+                        </a>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = '';
+            takes.forEach((t, idx) => {
+                const article = document.createElement('article');
+                article.className = 'bg-white border-2 border-ink p-4 flex flex-col justify-between shadow-[4px_4px_0px_#181816] hover:-translate-y-0.5 transition-transform';
+
+                const score = t.score || 0;
+                const scoreLabel = score >= 75 ? 'RESONANCE' : 'INTENT';
+                const scoreBg = score >= 75 ? 'bg-primary text-white' : 'bg-paper-sheet border border-ink text-ink';
+
+                const tagsHtml = (t.tags || [t.genre, t.emotion, t.scale || 'Close-Up', t.lighting || 'Low Key'])
+                    .map(tag => `<span class="font-mono text-[10px] border border-ink px-1.5 py-0.5 bg-paper-sheet">${tag}</span>`)
+                    .join(' ');
+
+                article.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between pb-2 border-b border-ink mb-3 text-xs font-mono font-bold">
+                            <span class="text-primary">${t.reelTag || ('TAKE NO. ' + String(idx + 1).padStart(3, '0'))}</span>
+                            <span class="${scoreBg} px-2 py-0.5 font-bold">${score}% ${scoreLabel}</span>
+                        </div>
+                        <div class="relative aspect-video w-full overflow-hidden border border-ink mb-3 bg-ink">
+                            <img alt="${t.title || 'Saved Take'}" class="w-full h-full object-cover" src="${t.thumbnail || 'https://images.unsplash.com/photo-1485846234645-a62644f84728?auto=format&fit=crop&w=1200&q=80'}" />
+                            <span class="absolute bottom-1 left-1 bg-black/80 text-white font-mono text-[9px] px-1">${t.timecode || 'TC 00:14:28'}</span>
+                        </div>
+                        <h4 class="font-headline font-bold text-xl uppercase text-ink mb-1">
+                            ${t.title || 'Untitled Sequence Analysis'}
+                        </h4>
+                        <p class="font-editorial text-sm text-ink-muted leading-snug mb-3">
+                            ${t.description || `${t.genre || 'Cinematography'} scene with intended ${t.emotion || 'mood'} profile.`}
+                        </p>
+                        <div class="flex flex-wrap gap-1.5 mb-4">
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    <div class="pt-3 border-t border-dashed border-ink flex justify-between items-center text-xs font-mono">
+                        <button onclick="removeSavedTake(${idx})" class="text-xs font-bold text-red-700 hover:text-ink uppercase flex items-center gap-1 cursor-pointer">
+                            <span class="material-symbols-outlined text-sm">delete</span>
+                            <span>Delete Take</span>
+                        </button>
+                        <a class="font-bold text-primary hover:text-ink underline uppercase" href="main.html">Inspect Take →</a>
+                    </div>
+                `;
+                grid.appendChild(article);
+            });
+        }
+
+        function removeSavedTake(idx) {
+            const takes = getSavedTakes();
+            if (idx >= 0 && idx < takes.length) {
+                takes.splice(idx, 1);
+                localStorage.setItem('cinematheque_saved_takes', JSON.stringify(takes));
+                renderSavedTakes();
+            }
+        }
+    </script>
+</body>
+
+</html>

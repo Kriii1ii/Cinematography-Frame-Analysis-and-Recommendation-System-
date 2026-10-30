@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-[#F5F1E8]" lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Cinema Pass — L'Épreuve Gazette &amp; Cinémathèque</title>
+    <!-- Material Symbols Outlined -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Google Fonts: Bricolage Grotesque, Newsreader, Space Mono, Fraunces -->
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&amp;family=Fraunces:ital,opsz,wght@0,9..144,700;0,9..144,900;1,9..144,700&amp;family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,600&amp;family=Space+Mono:wght@400;700&amp;display=swap"
+        rel="stylesheet" />
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "newsprint": "#F7F3EB",
+                        "newsprint-card": "#FAF7F0",
+                        "vermilion": "#C83226",
+                        "vermilion-dark": "#A82015",
+                        "ink": "#191714",
+                        "ink-light": "#4F4B44",
+                        "ink-faded": "#7E786D",
+                        "paper-border": "#191714",
+                        "ochre-tag": "#F3E3B6"
+                    },
+                    fontFamily: {
+                        "broadsheet": ['Fraunces', 'serif'],
+                        "headline": ['Bricolage Grotesque', 'sans-serif'],
+                        "serif": ['Newsreader', 'serif'],
+                        "mono": ['Space Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Newspaper double-rule border utility */
+        .border-double-rule {
+            border-top: 3px double #191714;
+            border-bottom: 1px solid #191714;
+        }
+
+        .border-double-bottom {
+            border-bottom: 3px double #191714;
+        }
+
+        .border-double-top {
+            border-top: 3px double #191714;
+        }
+
+        .shadow-broadsheet {
+            box-shadow: 6px 6px 0px #191714;
+        }
+    </style>
+</head>
+
+<body
+    class="min-h-screen bg-[#F5F1E8] text-ink font-serif antialiased flex flex-col justify-center items-center selection:bg-vermilion selection:text-white p-2 sm:p-4 md:p-6 overflow-x-hidden overflow-y-auto">
+    <!-- MAIN CANVAS -->
+    <main class="w-full max-w-5xl mx-auto flex flex-col justify-center items-center my-auto relative p-2 sm:p-6 md:p-8">
+
+        <!-- Vintage Outer Stickers (Layered behind ticket pass card) -->
+        <img src="assets/ticket_admit_one.png" alt="Admit One Ticket Sticker"
+            class="hidden md:block absolute -top-8 left-[12%] w-20 md:w-24 rotate-[-12deg] drop-shadow-[3px_5px_6px_rgba(0,0,0,0.18)] z-0 pointer-events-none" />
+
+        <img src="assets/ticket_theatre.png" alt="Theatre Ticket Sticker"
+            class="hidden md:block absolute top-[12%] -left-8 w-16 md:w-20 rotate-[-28deg] drop-shadow-[3px_5px_6px_rgba(0,0,0,0.18)] z-0 pointer-events-none" />
+
+        <img src="assets/sticker_tv_netflix.png" alt="Retro TV Netflix Sticker"
+            class="hidden md:block absolute -top-10 right-[35%] w-16 md:w-20 rotate-[6deg] drop-shadow-[3px_5px_6px_rgba(0,0,0,0.18)] z-0 pointer-events-none" />
+
+        <img src="assets/sticker_clapper.png" alt="Movies Clapperboard Sticker"
+            class="hidden md:block absolute -top-8 -right-4 w-18 md:w-22 rotate-[16deg] drop-shadow-[4px_6px_8px_rgba(0,0,0,0.22)] z-0 pointer-events-none" />
+
+        <img src="assets/ticket_happiness.png" alt="Ticket to Happiness Sticker"
+            class="hidden md:block absolute -bottom-10 -left-8 w-20 md:w-24 rotate-[18deg] drop-shadow-[3px_5px_6px_rgba(0,0,0,0.18)] z-0 pointer-events-none" />
+
+        <img src="assets/ticket_50c.png" alt="50c Ticket Sticker"
+            class="hidden md:block absolute -bottom-10 -right-8 w-16 md:w-20 rotate-[-20deg] drop-shadow-[3px_5px_6px_rgba(0,0,0,0.18)] z-0 pointer-events-none" />
+
+        <!-- BROADSHEET EDITORIAL TICKET PASS CARD (Layered in front) -->
+        <div
+            class="w-full bg-newsprint-card border-2 border-ink shadow-broadsheet rounded-none relative pt-7 pb-9 px-4 sm:px-8 md:px-10 my-auto z-10">
+            <!-- Top Perforated Film Strip -->
+            <div
+                class="absolute top-0 left-0 right-0 h-5 bg-[#EBE5D8] border-b border-ink/20 flex items-center px-4 select-none overflow-hidden">
+                <div class="flex-1 h-2.5 flex items-center justify-between gap-[5px] overflow-hidden opacity-85">
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                </div>
+                <div class="w-3.5 h-3.5 rounded-full bg-[#F5F1E8] border border-ink/40 ml-4 shrink-0 shadow-inner">
+                </div>
+            </div>
+
+            <!-- Masthead Header inside ticket pass -->
+            <div class="border-double-bottom pb-3 mb-4 text-center md:text-left">
+                <div class="flex flex-col md:flex-row md:items-end justify-between gap-2">
+                    <div>
+                        <div
+                            class="inline-flex items-center space-x-2 font-mono text-[10px] sm:text-[11px] uppercase tracking-widest text-ink-faded mb-0.5">
+                            <span class="px-1.5 py-0.5 bg-ink text-white font-bold">SECTION B</span>
+                            <span>•</span>
+                            <span>SPECIAL ISSUE NO. 4</span>
+                            <span>•</span>
+                            <span class="text-vermilion font-bold">ADMISSION DESK</span>
+                        </div>
+                        <div class="flex flex-wrap items-baseline justify-center md:justify-start gap-x-3 leading-none">
+                            <span
+                                class="font-broadsheet font-black italic text-3xl sm:text-4xl md:text-5xl text-ink tracking-tight">
+                                Admission
+                            </span>
+                            <span
+                                class="font-broadsheet font-black text-4xl sm:text-5xl md:text-6xl text-vermilion tracking-tight">
+                                Pass.
+                            </span>
+                        </div>
+                    </div>
+                    <!-- Vintage date seal / stamp -->
+                    <div class="hidden lg:flex flex-col items-end text-right font-mono text-xs">
+                        <span
+                            class="border border-ink px-3 py-1 bg-ochre-tag font-bold text-ink tracking-widest uppercase text-xs">
+                            TICKET STUB // 2024
+                        </span>
+                        <span class="text-ink-faded text-[10px] mt-0.5 tracking-wider">
+                            VALID FOR ALL SALLES &amp; ARCHIVES
+                        </span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TWO-COLUMN BROADSHEET LAYOUT -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 md:gap-8 items-stretch">
+                <!-- LEFT COLUMN: AUTH FORM (7 Cols) -->
+                <div class="lg:col-span-7 flex flex-col justify-between space-y-4">
+                    <!-- Sign In / Sign Up Selector Tabs -->
+                    <div class="flex border-2 border-ink bg-[#EEE9DD] p-1">
+                        <button
+                            class="flex-1 py-1.5 text-center font-headline font-bold text-xs tracking-wider uppercase transition-all bg-vermilion text-white shadow-sm cursor-pointer"
+                            id="tab-signin" type="button" onclick="switchAuthTab('signin')">
+                            SIGN IN TO PASS
+                        </button>
+                        <button
+                            class="flex-1 py-1.5 text-center font-headline font-bold text-xs tracking-wider uppercase transition-all text-ink hover:text-vermilion cursor-pointer"
+                            id="tab-signup" type="button" onclick="switchAuthTab('signup')">
+                            NEW MEMBER REG.
+                        </button>
+                    </div>
+
+                    <!-- FORMS CONTAINER -->
+                    <div class="flex-1 flex flex-col justify-between space-y-3">
+                        <!-- 1. SIGN IN FORM -->
+                        <form id="form-signin" class="space-y-3 flex-1 flex flex-col justify-between" novalidate>
+                            <div class="space-y-3">
+                                <!-- Error Feedback Box -->
+                                <div id="signin-error-box"
+                                    class="hidden bg-vermilion/10 border-2 border-vermilion p-2 text-xs text-vermilion font-mono">
+                                    <div class="flex items-center space-x-1.5 font-bold">
+                                        <span class="material-symbols-outlined text-sm">warning</span>
+                                        <span id="signin-error-text">Invalid login credentials.</span>
+                                    </div>
+                                </div>
+
+                                <!-- Field 1: Email -->
+                                <div class="space-y-0.5">
+                                    <div class="flex justify-between items-baseline">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="alias-input">
+                                            EMAIL
+                                        </label>
+                                        <span
+                                            class="font-mono text-[9px] text-ink-faded uppercase tracking-widest">IDENTITY
+                                            KEY</span>
+                                    </div>
+                                    <div class="relative">
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-3.5 py-2 text-ink font-serif text-sm placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="alias-input" name="alias" placeholder="Email" required=""
+                                            type="email" />
+                                        <span
+                                            class="material-symbols-outlined absolute right-3 top-2.5 text-ink-faded text-[18px]">
+                                            mail
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <!-- Field 2: Password -->
+                                <div class="space-y-0.5">
+                                    <div class="flex justify-between items-baseline">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="passcode-input">
+                                            PASSWORD
+                                        </label>
+                                        <a class="font-mono text-[10px] text-vermilion hover:underline uppercase tracking-wider"
+                                            href="#">
+                                            FORGOT KEY?
+                                        </a>
+                                    </div>
+                                    <div class="relative">
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-3.5 py-2 text-ink font-mono text-sm tracking-widest placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="passcode-input" name="passcode" placeholder="Password" required=""
+                                            type="password" />
+                                        <button
+                                            class="material-symbols-outlined absolute right-3 top-2.5 text-ink-faded hover:text-ink text-[18px]"
+                                            title="Toggle visibility" type="button"
+                                            onclick="const p = document.getElementById('passcode-input'); p.type = p.type === 'password' ? 'text' : 'password';">
+                                            visibility
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Submit Button -->
+                            <div class="pt-2">
+                                <button
+                                    class="w-full bg-ink hover:bg-vermilion text-white active:translate-x-[1px] active:translate-y-[1px] transition-all duration-150 py-3 px-5 font-headline font-extrabold text-xs uppercase tracking-widest flex items-center justify-center space-x-2 border-2 border-ink cursor-pointer group shadow-[3px_3px_0px_#C83226]"
+                                    type="submit">
+                                    <span>PLEASE GO AHEAD</span>
+                                    <span
+                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">
+                                        arrow_forward
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+
+                        <!-- 2. NEW MEMBER REGISTRATION FORM -->
+                        <form id="form-signup" class="space-y-2 hidden flex-1 flex flex-col justify-between" novalidate>
+                            <div class="space-y-1.5">
+                                <div id="signup-error-box"
+                                    class="hidden bg-vermilion/10 border-2 border-vermilion p-2 text-xs text-vermilion font-mono">
+                                    <div class="flex items-center space-x-1.5 font-bold">
+                                        <span class="material-symbols-outlined text-sm">warning</span>
+                                        <span id="signup-error-text">Please complete all fields according to
+                                            standards.</span>
+                                    </div>
+                                </div>
+
+                                <div class="space-y-0.5">
+                                    <label
+                                        class="block font-headline font-bold text-xs uppercase tracking-widest text-ink">
+                                        Profile Picture / Dossier Portrait
+                                    </label>
+                                    <div class="flex items-center space-x-3 bg-[#FAF7F2] border-2 border-ink p-1.5">
+                                        <div
+                                            class="w-10 h-12 border border-ink bg-ink shrink-0 overflow-hidden relative shadow-[1px_1px_0px_#181816]">
+                                            <img id="photo-preview"
+                                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBpH8zRVVZVkGVGoirFRz9JHr4SjEB5gZ7aoWl64VkoQs9xbihF0Xx7JW2_uRV93naf_gXnuqJkYKIsWSi5wlgjHmEfs_JfW2zqt7mEnTy4klV5u6HUdTwBbsZdTlXnJ_-NBAtcRuox8sfdKVjALH8qX0X3n1vISKjsUEHqKSP6worxWD71F-nWtk5NmJUk1yy4wQncs3yutA6RmK2BJDfMCUjF6Y0j2k_IZ_k6Kc6TTMTNsH8jfCIv"
+                                                alt="Preview"
+                                                class="w-full h-full object-cover grayscale contrast-125" />
+                                        </div>
+                                        <div class="flex-1 space-y-0.5">
+                                            <label for="reg-photo-input"
+                                                class="inline-block px-2.5 py-0.5 bg-ink text-white font-mono text-[10px] uppercase font-bold cursor-pointer hover:bg-vermilion transition-colors border border-ink">
+                                                Upload Custom Photo...
+                                            </label>
+                                            <input type="file" id="reg-photo-input" accept="image/*" class="hidden"
+                                                onchange="previewProfilePhoto(event)" />
+                                            <span id="photo-file-name"
+                                                class="block font-mono text-[9px] text-ink-faded truncate">Default
+                                                portrait ready</span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <div class="space-y-0.5">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="reg-name-input">
+                                            Director Name *
+                                        </label>
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-ink font-serif text-xs placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="reg-name-input" name="name" placeholder="e.g. Jean-Luc Godard"
+                                            required="" type="text" />
+                                    </div>
+                                    <div class="space-y-0.5">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="reg-email-input">
+                                            Work Email *
+                                        </label>
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-ink font-serif text-xs placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="reg-email-input" name="email" placeholder="director@cinema.org"
+                                            required="" type="email" />
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <div class="space-y-0.5">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="reg-role-input">
+                                            Role / Title
+                                        </label>
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-ink font-serif text-xs placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="reg-role-input" name="role" placeholder="Cinematographer & Director"
+                                            type="text" />
+                                    </div>
+                                    <div class="space-y-0.5">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="reg-bio-input">
+                                            Poetic Statement
+                                        </label>
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-ink font-serif text-xs placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="reg-bio-input" name="bio" placeholder="Exploring natural light..."
+                                            type="text" />
+                                    </div>
+                                </div>
+
+                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                    <div class="space-y-0.5">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="reg-pass-input">
+                                            Password *
+                                        </label>
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-ink font-mono text-xs tracking-widest placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="reg-pass-input" name="password" placeholder="Min 8 chars" required=""
+                                            type="password" />
+                                    </div>
+                                    <div class="space-y-0.5">
+                                        <label
+                                            class="block font-headline font-bold text-xs uppercase tracking-widest text-ink"
+                                            for="reg-confirm-input">
+                                            Confirm *
+                                        </label>
+                                        <input
+                                            class="w-full bg-[#FAF7F2] border-2 border-ink px-2.5 py-1 text-ink font-mono text-xs tracking-widest placeholder:text-ink-faded/50 focus:outline-none focus:ring-0 focus:border-vermilion focus:bg-white transition-colors"
+                                            id="reg-confirm-input" name="confirm" placeholder="Confirm" required=""
+                                            type="password" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="pt-2">
+                                <button
+                                    class="w-full bg-vermilion hover:bg-ink text-white active:translate-x-[1px] active:translate-y-[1px] transition-all duration-150 py-3 px-5 font-headline font-extrabold text-xs uppercase tracking-widest flex items-center justify-center space-x-2 border-2 border-ink cursor-pointer group shadow-[3px_3px_0px_#181816]"
+                                    type="submit">
+                                    <span>Create Pass &amp; Register</span>
+                                    <span
+                                        class="material-symbols-outlined text-[16px] group-hover:translate-x-1 transition-transform">
+                                        how_to_reg
+                                    </span>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- RIGHT COLUMN: GALLERY SLIDESHOW & TICKET STUB (5 Cols) -->
+                <div class="lg:col-span-5 lg:border-l-2 lg:border-ink lg:pl-6 flex flex-col justify-between space-y-3">
+                    <!-- Retrospective Slideshow Container (Matches exact screenshot layout) -->
+                    <div id="slideshow-box"
+                        class="border-2 border-ink bg-[#FFFDF9] p-3 relative group overflow-hidden cursor-pointer select-none shadow-[3px_3px_0px_#181816]"
+                        onmouseenter="handleSlideshowHover()" onclick="nextSlide()">
+                        <!-- Top Header Badge -->
+                        <div class="flex items-center justify-between border-b-2 border-ink pb-1.5 mb-2">
+                            <div class="flex items-center space-x-1.5">
+                                <span class="w-2 h-2 rounded-full bg-vermilion animate-pulse inline-block"></span>
+                                <h2 class="font-headline font-extrabold text-xs uppercase tracking-wider text-ink">
+                                    CINÉMATHÈQUE GALLERY
+                                </h2>
+                            </div>
+                            <span id="slide-indicator-tag"
+                                class="font-mono text-[9px] text-vermilion font-bold uppercase tracking-wider">SLIDE 01
+                                / 02</span>
+                        </div>
+
+                        <!-- Slideshow Image Frame -->
+                        <div
+                            class="relative w-full h-44 sm:h-48 bg-[#FAF7F2] border-2 border-ink overflow-hidden flex items-center justify-center p-2">
+                            <img id="slide-img-1" src="assets/series.png" alt="Series Cutout Graphic"
+                                class="absolute inset-0 w-full h-full object-contain p-2 transition-all duration-700 opacity-100 scale-100" />
+                            <img id="slide-img-2" src="assets/movietime.png"
+                                alt="Movie Time Cinema Clapperboard Graphic"
+                                class="absolute inset-0 w-full h-full object-contain p-2 transition-all duration-700 opacity-0 scale-95" />
+                        </div>
+
+                        <!-- Navigation Dots & Caption -->
+                        <div class="mt-2.5 flex items-center justify-between font-sans text-[11px]">
+                            <div class="flex items-center space-x-1.5">
+                                <button type="button" onclick="event.stopPropagation(); setSlide(0)" id="dot-0"
+                                    class="w-2.5 h-2.5 rounded-full border border-ink bg-vermilion transition-all"></button>
+                                <button type="button" onclick="event.stopPropagation(); setSlide(1)" id="dot-1"
+                                    class="w-2.5 h-2.5 rounded-full border border-ink bg-ink/20 transition-all"></button>
+                            </div>
+                            <span id="slide-caption" class="font-serif italic text-xs text-ink-light">
+                                Series Press Cutting Archive
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Admission Slip / Physical Stub Representation -->
+                    <div class="border-2 border-ink bg-newsprint p-2.5 flex items-center justify-between">
+                        <div>
+                            <span class="block font-mono text-[9px] uppercase tracking-widest text-ink-faded">PASS
+                                STATUS</span>
+                            <span class="font-broadsheet font-bold text-sm text-ink">Admit One Patron</span>
+                        </div>
+                        <div class="text-right">
+                            <span class="block font-mono text-[9px] uppercase tracking-widest text-ink-faded">LOGE
+                                RESERVED</span>
+                            <span class="font-mono font-bold text-vermilion text-xs">SECTION 04-A</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Broadsheet Colophon Bottom Footer -->
+            <div
+                class="mt-4 mb-2 pt-2 border-double-top flex flex-col sm:flex-row items-center justify-between text-ink-faded text-[9px] font-mono gap-1">
+                <span>EDITED BY THE CURATORIAL BOARD</span>
+                <span class="text-center italic font-serif text-[10px]">"Printed on cotton rag broadsheet"</span>
+                <span>ARCHIVE REF: EP-1974</span>
+            </div>
+
+            <div
+                class="absolute bottom-0 left-0 right-0 h-5 bg-[#EBE5D8] border-t border-ink/20 flex items-center px-4 select-none overflow-hidden">
+                <div class="flex-1 h-2.5 flex items-center justify-between gap-[5px] overflow-hidden opacity-85">
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                    <span class="w-2.5 h-1.5 bg-[#2B2B28] shrink-0 rounded-[1px]"></span>
+                </div>
+                <div class="w-3.5 h-3.5 rounded-full bg-[#F5F1E8] border border-ink/40 ml-4 shrink-0 shadow-inner">
+                </div>
+            </div>
+
+            <!-- Left & Right Ticket Hole Punch Cuts -->
+            <div
+                class="absolute -left-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#F5F1E8] border-2 border-ink z-10">
+            </div>
+            <div
+                class="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#F5F1E8] border-2 border-ink z-10">
+            </div>
+        </div>
+    </main>
+
+    <!-- Interactive authentication validation, registration & slideshow script -->
+    <script>
+        function switchAuthTab(tab) {
+            const tabIn = document.getElementById('tab-signin');
+            const tabUp = document.getElementById('tab-signup');
+            const fIn = document.getElementById('form-signin');
+            const fUp = document.getElementById('form-signup');
+
+            clearErrorBoxes();
+
+            if (tab === 'signup') {
+                if (tabUp) {
+                    tabUp.className = 'flex-1 py-1.5 text-center font-headline font-bold text-xs tracking-wider uppercase transition-all bg-vermilion text-white shadow-sm cursor-pointer';
+                }
+                if (tabIn) {
+                    tabIn.className = 'flex-1 py-1.5 text-center font-headline font-bold text-xs tracking-wider uppercase transition-all text-ink hover:text-vermilion bg-transparent cursor-pointer';
+                }
+                if (fUp) {
+                    fUp.style.display = 'flex';
+                    fUp.classList.remove('hidden');
+                }
+                if (fIn) {
+                    fIn.style.display = 'none';
+                    fIn.classList.add('hidden');
+                }
+            } else {
+                if (tabIn) {
+                    tabIn.className = 'flex-1 py-1.5 text-center font-headline font-bold text-xs tracking-wider uppercase transition-all bg-vermilion text-white shadow-sm cursor-pointer';
+                }
+                if (tabUp) {
+                    tabUp.className = 'flex-1 py-1.5 text-center font-headline font-bold text-xs tracking-wider uppercase transition-all text-ink hover:text-vermilion bg-transparent cursor-pointer';
+                }
+                if (fIn) {
+                    fIn.style.display = 'flex';
+                    fIn.classList.remove('hidden');
+                }
+                if (fUp) {
+                    fUp.style.display = 'none';
+                    fUp.classList.add('hidden');
+                }
+            }
+        }
+
+        const tabSignIn = document.getElementById('tab-signin');
+        const tabSignUp = document.getElementById('tab-signup');
+        const formSignIn = document.getElementById('form-signin');
+        const formSignUp = document.getElementById('form-signup');
+
+        if (tabSignIn) tabSignIn.addEventListener('click', () => switchAuthTab('signin'));
+        if (tabSignUp) tabSignUp.addEventListener('click', () => switchAuthTab('signup'));
+
+        function clearErrorBoxes() {
+            const err1 = document.getElementById('signin-error-box');
+            const err2 = document.getElementById('signup-error-box');
+            if (err1) err1.classList.add('hidden');
+            if (err2) err2.classList.add('hidden');
+        }
+
+        let uploadedPhotoDataUrl = null;
+
+        function previewProfilePhoto(event) {
+            const file = event.target.files && event.target.files[0];
+            if (file) {
+                if (file.size > 5 * 1024 * 1024) {
+                    showError('signup', 'Image size should be less than 5MB.');
+                    return;
+                }
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    uploadedPhotoDataUrl = e.target.result;
+                    const previewImg = document.getElementById('photo-preview');
+                    if (previewImg) previewImg.src = uploadedPhotoDataUrl;
+                    const nameLabel = document.getElementById('photo-file-name');
+                    if (nameLabel) nameLabel.textContent = file.name;
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function generateInitialsAvatar(name) {
+            const initial = (name ? name.trim().charAt(0) : 'D').toUpperCase();
+            const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="200" height="240" viewBox="0 0 200 240"><rect width="100%" height="100%" fill="#181816"/><circle cx="100" cy="90" r="45" fill="#C83226"/><text x="100" y="105" font-family="'Space Mono', monospace" font-size="44" font-weight="bold" fill="#FAF7F2" text-anchor="middle">${initial}</text><rect x="40" y="155" width="120" height="60" rx="30" fill="#2A2723"/></svg>`;
+            return 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+        }
+
+        function validateEmailStandard(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(String(email).trim().toLowerCase());
+        }
+
+        function validatePasswordStandard(pass) {
+            if (!pass || pass.length < 4) {
+                return { valid: false, message: 'Password must be at least 4 characters long.' };
+            }
+            return { valid: true };
+        }
+
+        function showError(formType, message) {
+            const box = document.getElementById(formType + '-error-box');
+            const textElem = document.getElementById(formType + '-error-text');
+            if (textElem) textElem.textContent = message;
+            if (box) box.classList.remove('hidden');
+        }
+
+        // Persistent User DB Manager
+        const UserDB = {
+            KEY: 'cinematheque_registered_users_db',
+            getUsers() {
+                try {
+                    const data = localStorage.getItem(this.KEY);
+                    return data ? JSON.parse(data) : [];
+                } catch (e) {
+                    return [];
+                }
+            },
+            saveUser(userObj, setActive = false) {
+                if (!userObj || !userObj.email) return;
+                const users = this.getUsers();
+                const idx = users.findIndex(u => u.email && u.email.toLowerCase() === userObj.email.toLowerCase());
+                if (idx >= 0) {
+                    users[idx] = { ...users[idx], ...userObj };
+                } else {
+                    users.push(userObj);
+                }
+                localStorage.setItem(this.KEY, JSON.stringify(users));
+                if (setActive) {
+                    localStorage.setItem('registeredUser', JSON.stringify(userObj));
+                    localStorage.setItem('activeUser', JSON.stringify(userObj));
+                }
+            },
+            findUserByEmail(email) {
+                if (!email) return null;
+                const users = this.getUsers();
+                return users.find(u => u.email && u.email.toLowerCase() === email.trim().toLowerCase());
+            }
+        };
+
+        function getApiEndpoint(path) {
+            if (window.location.protocol === 'file:' || (window.location.port && window.location.port !== '8000')) {
+                return 'http://localhost:8000' + path;
+            }
+            return path;
+        }
+
+        // Fetch registered users from backend on page load to sync local database
+        async function syncBackendUsers() {
+            try {
+                const res = await fetch(getApiEndpoint('/api/auth/users'));
+                if (res.ok) {
+                    const serverUsers = await res.json();
+                    if (Array.isArray(serverUsers)) {
+                        serverUsers.forEach(u => UserDB.saveUser(u, false));
+                    }
+                }
+            } catch (e) {
+                // Ignore offline sync
+            }
+        }
+        syncBackendUsers();
+
+        // SIGN UP Handler
+        if (formSignUp) {
+            formSignUp.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                clearErrorBoxes();
+
+                const nameInput = document.getElementById('reg-name-input');
+                const emailInput = document.getElementById('reg-email-input');
+                const roleInput = document.getElementById('reg-role-input');
+                const bioInput = document.getElementById('reg-bio-input');
+                const passInput = document.getElementById('reg-pass-input');
+                const confirmInput = document.getElementById('reg-confirm-input');
+
+                const name = nameInput ? nameInput.value.trim() : '';
+                const email = emailInput ? emailInput.value.trim() : '';
+                const role = roleInput ? roleInput.value.trim() : '';
+                const bio = bioInput ? bioInput.value.trim() : '';
+                const pass = passInput ? passInput.value : '';
+                const confirmPass = confirmInput ? confirmInput.value : '';
+
+                // Strict validation: Require name, email, and password
+                if (!name) {
+                    showError('signup', 'Please enter your Director Alias or Legal Name.');
+                    if (nameInput) nameInput.focus();
+                    return;
+                }
+
+                if (!email) {
+                    showError('signup', 'Please enter your work email address.');
+                    if (emailInput) emailInput.focus();
+                    return;
+                }
+
+                if (!validateEmailStandard(email)) {
+                    showError('signup', 'Please enter a valid email format (e.g. director@cinema.org).');
+                    if (emailInput) emailInput.focus();
+                    return;
+                }
+
+                const passCheck = validatePasswordStandard(pass);
+                if (!passCheck.valid) {
+                    showError('signup', passCheck.message || 'Password must be at least 4 characters long.');
+                    if (passInput) passInput.focus();
+                    return;
+                }
+
+                if (pass !== confirmPass) {
+                    showError('signup', 'Passwords do not match. Please verify your confirmation.');
+                    if (confirmInput) confirmInput.focus();
+                    return;
+                }
+
+                // Check if account already exists
+                const existing = UserDB.findUserByEmail(email);
+                if (existing) {
+                    showError('signup', 'An account with this email already exists. Please switch to Sign In.');
+                    return;
+                }
+
+                const registeredProfile = {
+                    name: name,
+                    email: email,
+                    role: role,
+                    bio: bio,
+                    photo: uploadedPhotoDataUrl || generateInitialsAvatar(name),
+                    password: pass,
+                    ref: 'REF. ' + name.substring(0, 2).toUpperCase() + '-8840 • PARIS // BERLIN',
+                    registeredAt: new Date().toISOString()
+                };
+
+                // Save locally and set as active session
+                UserDB.saveUser(registeredProfile, true);
+
+                // Sync with backend database.json
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+                    const res = await fetch(getApiEndpoint('/api/auth/register'), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(registeredProfile),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.user) {
+                            UserDB.saveUser(data.user, true);
+                        }
+                    }
+                } catch (err) {
+                    console.warn('Backend database sync notice:', err);
+                }
+
+                window.location.href = 'main.html';
+            });
+        }
+
+        // SIGN IN Handler
+        if (formSignIn) {
+            formSignIn.addEventListener('submit', async function (e) {
+                e.preventDefault();
+                clearErrorBoxes();
+
+                const emailInput = document.getElementById('alias-input');
+                const passInput = document.getElementById('passcode-input');
+
+                const email = emailInput ? emailInput.value.trim() : '';
+                const pass = passInput ? passInput.value : '';
+
+                // Strict validation: Require both email and password
+                if (!email) {
+                    showError('signin', 'Please enter your email address to access your pass.');
+                    if (emailInput) emailInput.focus();
+                    return;
+                }
+
+                if (!validateEmailStandard(email)) {
+                    showError('signin', 'Please enter a valid email address format (e.g. director@cinema.org).');
+                    if (emailInput) emailInput.focus();
+                    return;
+                }
+
+                if (!pass) {
+                    showError('signin', 'Please enter your password.');
+                    if (passInput) passInput.focus();
+                    return;
+                }
+
+                // Check backend authentication first
+                try {
+                    const controller = new AbortController();
+                    const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+                    const res = await fetch(getApiEndpoint('/api/auth/login'), {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ email: email, password: pass }),
+                        signal: controller.signal
+                    });
+                    clearTimeout(timeoutId);
+
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (data && data.user) {
+                            UserDB.saveUser(data.user, true);
+                            window.location.href = 'main.html';
+                            return;
+                        }
+                    } else {
+                        const errData = await res.json().catch(() => ({}));
+                        const errMsg = errData.detail || errData.message || 'Invalid email or password.';
+                        showError('signin', errMsg);
+                        return;
+                    }
+                } catch (err) {
+                    // Offline or server unreachable: check local DB
+                    const userInDB = UserDB.findUserByEmail(email);
+                    if (!userInDB) {
+                        showError('signin', 'No membership found with this email. Please register as a new member.');
+                        return;
+                    }
+
+                    if (userInDB.password && userInDB.password !== pass) {
+                        showError('signin', 'Invalid password. Please verify your credentials.');
+                        return;
+                    }
+
+                    UserDB.saveUser(userInDB, true);
+                    window.location.href = 'main.html';
+                }
+            });
+        }
+
+        // Slideshow Logic
+        let currentSlide = 0;
+        let slideInterval = null;
+
+        function showSlide(index) {
+            currentSlide = index % 2;
+            const img1 = document.getElementById('slide-img-1');
+            const img2 = document.getElementById('slide-img-2');
+            const dot0 = document.getElementById('dot-0');
+            const dot1 = document.getElementById('dot-1');
+            const tag = document.getElementById('slide-indicator-tag');
+            const caption = document.getElementById('slide-caption');
+
+            if (!img1 || !img2) return;
+
+            if (currentSlide === 0) {
+                img1.classList.remove('opacity-0', 'scale-95');
+                img1.classList.add('opacity-100', 'scale-100');
+                img2.classList.remove('opacity-100', 'scale-100');
+                img2.classList.add('opacity-0', 'scale-95');
+
+                if (dot0) dot0.className = "w-2.5 h-2.5 rounded-full border border-ink bg-vermilion transition-all";
+                if (dot1) dot1.className = "w-2.5 h-2.5 rounded-full border border-ink bg-ink/20 transition-all";
+                if (tag) tag.textContent = "SLIDE 01 / 02";
+                if (caption) caption.textContent = "Series Press Cutting Archive";
+            } else {
+                img1.classList.remove('opacity-100', 'scale-100');
+                img1.classList.add('opacity-0', 'scale-95');
+                img2.classList.remove('opacity-0', 'scale-95');
+                img2.classList.add('opacity-100', 'scale-100');
+
+                if (dot0) dot0.className = "w-2.5 h-2.5 rounded-full border border-ink bg-ink/20 transition-all";
+                if (dot1) dot1.className = "w-2.5 h-2.5 rounded-full border border-ink bg-vermilion transition-all";
+                if (tag) tag.textContent = "SLIDE 02 / 02";
+                if (caption) caption.textContent = "Movie Time Cinema Clapperboard";
+            }
+        }
+
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+        }
+
+        function setSlide(index) {
+            showSlide(index);
+            resetInterval();
+        }
+
+        function handleSlideshowHover() {
+            nextSlide();
+            resetInterval();
+        }
+
+        function startInterval() {
+            slideInterval = setInterval(() => {
+                nextSlide();
+            }, 10000);
+        }
+
+        function resetInterval() {
+            if (slideInterval) clearInterval(slideInterval);
+            startInterval();
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            startInterval();
+
+            const urlParams = new URLSearchParams(window.location.search);
+            if (urlParams.get('tab') === 'signup' || window.location.hash === '#signup') {
+                if (tabSignUp) tabSignUp.click();
+            }
+        });
+    </script>
+</body>
+
+</html>

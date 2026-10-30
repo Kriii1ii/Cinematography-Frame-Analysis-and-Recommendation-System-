@@ -1,0 +1,35 @@
+# Python generated files
+__pycache__/
+*.py[cod]
+
+# Virtual environments
+venv/
+.venv/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.save
+
+# Local user database containing credentials
+database.json
+
+# Ephemeral media uploads
+*.mp4
+*.mov
+*.mkv
+*.avi
+
+# General image uploads/caches (allow UI assets)
+*.jpg
+*.jpeg
+*.png
+!assets/*
+
+# Markdown documentation (only README.md is tracked)
+*.md
+!README.md
+
+# macOS files
+.DS_Store

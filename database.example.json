@@ -1,0 +1,13 @@
+[
+  {
+    "id": "USR-0001",
+    "name": "Jean-Luc Godard",
+    "email": "director@cinematheque.fr",
+    "role": "Director & Cinematographer",
+    "bio": "Pioneer of French New Wave cinema.",
+    "photo": null,
+    "password": "Password123",
+    "ref": "REF. JL-8840 • PARIS // BERLIN",
+    "registeredAt": "2026-10-06T00:00:00Z"
+  }
+]
