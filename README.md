@@ -4,7 +4,7 @@ An intelligent multimodal video frame analysis and directorial recommendation en
 
 ---
 
-## 📽️ Features
+## Features
 
 - **Automated Cinematographic Dimension Classification**:
   - **Shot Scale**: Extreme Long Shot, Long Shot, Medium Shot, Close-Up
@@ -27,7 +27,7 @@ An intelligent multimodal video frame analysis and directorial recommendation en
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ```
                        Uploaded Video Clip (.mp4)
@@ -59,7 +59,7 @@ An intelligent multimodal video frame analysis and directorial recommendation en
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -106,6 +106,6 @@ An intelligent multimodal video frame analysis and directorial recommendation en
 
 ---
 
-## 🔒 Confidentiality & Security Notice
+## Confidentiality & Security Notice
 
 - Environment configuration files (`.env`) and local user databases (`database.json`) are strictly excluded from version control to protect credentials and personal data.
