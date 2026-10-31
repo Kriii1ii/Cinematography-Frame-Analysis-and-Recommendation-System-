@@ -19,11 +19,9 @@ An intelligent multimodal video frame analysis and directorial recommendation en
   - Computes weighted intent alignment scores ($0 - 100$) with highlighted strengths and mismatches.
 
 - **Generative Directorial Recommendations**:
-  - Integrates with Google Gemini (or compatible LLM providers) to provide actionable directorial advice, alternative framing solutions, and creative options for scene reshoots.
+  - Integrates with Google Gemini to provide actionable directorial advice, alternative framing solutions, and creative options for scene reshoots.
   - Transparent model uncertainty disclosures when classifier margins are close.
 
-- **Broadsheet Editorial Interface**:
-  - Retro-newspaper aesthetic workbench with real-time video upload, freeze-frame preview, and telemetry bars.
 
 ---
 
